@@ -66,6 +66,53 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Interfejsy",
+        "groups": [
+          {
+            "group": "Ofertowanie",
+            "pages": [
+              "Oferta ze zlecenia",
+              "Nowa oferta",
+              "Oferta na przegląd",
+              "Oferta na "
+            ]
+          },
+          {
+            "group": "Przepływy",
+            "pages": [
+              "essentials/settings",
+              "essentials/navigation"
+            ]
+          },
+          {
+            "group": "Karty szczegółów rekordów",
+            "pages": [
+              "Karta zlecenia serwisowego",
+              "Karta przeglądu",
+              "Karta oferty",
+              "Karta przepływu",
+              "przepływu"
+            ]
+          },
+          {
+            "group": "Przeglądy",
+            "pages": [
+              "ai-tools/cursor",
+              "ai-tools/claude-code",
+              "ai-tools/windsurf"
+            ]
+          },
+          {
+            "group": "Linki do rekordów",
+            "pages": [
+              "ai-tools/cursor",
+              "ai-tools/claude-code",
+              "ai-tools/windsurf"
+            ]
+          }
+        ]
       }
     ],
     "global": {
