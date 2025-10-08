@@ -1,0 +1,102 @@
+---
+title: "Nowa oferta"
+description: ""
+---
+
+
+
+<Frame>
+  <img src="/images/Oferty.png" alt="Zrzut ekranu z interfejsu: Oferta ze zlecenia" style={{ borderRadius: '0.5rem' }} />
+</Frame>
+
+To jest interfejs typu "Record review". Po lewej stronie ekranu wyświetlana jest lista rekordów. Szczegóły danego rekordu
+(razem z przyciskami mogącymi na niego wpłynąć), wyświetlane są na prawo od listy. 
+
+Ten interfejs jest "wglądem" w arkusz ofert. To znaczy że wszystkie zmiany tutaj wprowadzone, są wprowadzane w rekordzie w bazie danych.
+
+## Lista rekordów
+
+### Właściwości listy
+<Frame>
+  <img src="\images\Oferty-filtry.png" alt="Zrzut ekranu z interfejsu: Oferta- właściwości listy" style={{ borderRadius: '0.5rem' }} />
+</Frame>
+
+W prawym górnym rogu widzimy przyciski. 
+
+- Z symbolem plusa, służy do [utworzenia nowej oferty](). 
+- Z kwadratem i strzałką, otwieta w nowym oknie stronę [oferta ze zlecenia](Oferta%20ze%20zlecenia).
+- 3 kropki, pokazują dodatkowe opcje tj. wydrukowanie rekordu.
+
+Poniżej dużych przycisków widzimy mniejsze, odpowiedzialne za właściwości listy rekordów. 
+
+- Po lewej "group", pozwala na grupowanie rekordów
+- Po środku "filter", pozwala na filtrowanie rekordów według dowolnych pól w arkuszu
+- Po prawej "sort", pozwala na wybór sortowania listy, domyślnie wg. daty utworzenia
+
+Po lewej stronie, poniżej napisu "Oferty" możemy wybrać wzór filtrowania. Domyślnie pokazywane są wszystkie rekordy.
+Można również wybrać by pokazywane były wygenerowane/nie wygenerowane oferty.
+
+Na samym dole jest pasek wyszukiwania. Możemy tam wyszukać rekord po dowolnej rzeczy obecnej  w [podsumowaniu rekordu](Podsumowanie%20rekordu) 
+(numer oferty/typ/szpital).
+
+### Podsumowanie rekordu
+
+<Frame>
+  <img src="/images/Oferty-podsumowanie.png" alt="Zrzut ekranu z interfejsu: Oferta ze zlecenia" style={{ borderRadius: '0.5rem' }} />
+</Frame>
+
+#### Pasek i załącznik
+
+Po lewej stronie wyświetlany jest pasek statusu uzależniony od tego czy dana oferta jest w [trybie edycji]().
+- Ciemnoszary pasek- rekord w trybie edycji (jak widać na obrazku powyżej).
+- Jasnoszary pasek- rekord poza trybem edycji.
+
+Po prawej od paska widoczne jest pole w którym wyświetlany jest plik oferty. Mógł on zostać wygenerowany lub wklejony ręcznie do rekordu.
+
+<AccordionGroup>
+  <Accordion icon="question-mark" title="Wnioskowanie ze statusu i pliku">
+  Jeżeli status wskazuje na to że rekord jest w trybie edycji i nie widać pliku, można wywnioskować że nie był on jeszcze wygenerowany.
+  
+  Przypadek gdy plik jest obecny a rekord nie jest w trybie edycji świadczy o tym że oferta została wygenerowana i od tego czasu nic w treści
+  rekordu nie było zmieniane.
+
+  Warto natomiast zwrócić uwagę na rekordy w trybie edycji z załącznikiem.
+
+  Może to wskazywać na to że jakieś zmiany zostały wprowadzone w rekordzie już po wygenerowaniu pliku. 
+  
+  Warto wtedy sprawdzić czy aby napewno to co jest w wygenerowanym PDFie zgadza się z danymi w rekordzie. 
+  
+  Po sprawdzeniu poprawności, w takim rekordzie można wyłączyć tryb edycji, trzeba jednak pamiętać że bez względu na to czy były jakieś zmiany, 
+  wygenerowany zostanie nowy plik PDF na podstawie rekordu.  
+</Accordion>
+</AccordionGroup>
+
+#### Numer, typ, klient
+
+Na prawo od załącznika, widzimy 3 linijki.
+
+- Pierwsza to [numer oferty]().
+- Druga zawiera [typ]() oferty.
+- Trzecia zawiera skrót [klienta]().
+
+
+## Dodawanie nowej oferty
+<Frame>
+  <img src="/images/Oferty-nowa.png" alt="Zrzut ekranu, interfejs oferty, nowa oferta" style={{ borderRadius: '0.5rem' }} />
+</Frame>
+
+Po wciśnięciu przycisku z plusem (tego nad listą rekordów), otwiera się okno tworzenia nowej oferty.
+W tym oknie jedynie wybieramy typ ([warunkujący widoczność pól]() w szczegółach rekordu)
+
+<CardGroup cols={1}>
+
+<Card title="Edycja utworzonej oferty" icon="pen-to-square" href="/Nowa%20oferta">
+  Learn MDX syntax and start writing your documentation.
+</Card>
+
+
+</CardGroup>
+
+<Note>
+  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
+</Note>
