@@ -97,9 +97,27 @@ Na prawo od załącznika, widzimy 3 linijki.
 
 Po wciśnięciu przycisku z plusem (tego nad listą rekordów), otwiera się okno tworzenia nowej oferty. W tym oknie jedynie wybieramy typ (warunkujący [widoczność pól]() w szczegółach rekordu)
 
-## Edycja nowej oferty- widok edytowalny
+# Edycja nowej oferty- wspólne pola
 
-![obraz.png](/images/obraz.png)
+![Zrzut ekranu 2025-10-09 105143.png](/images/Zrzutekranu2025-10-09105143.png)
+
+### Przycisk "Generuj prot. przegl."
+
+Ustawia wartość checkbox "Generuj PP" w tej ofercie na "TAK". Jeżeli checkbox już jest "TAK" to przycisk jest biały i napis zmienia się na "Wygenerowano PP".
+
+Zmiana wartości pola Generuj PP jest wykrywana przez automatyzację która to dla wszystkich podłączonych przeglądów (czyli dla [przeglądów podłączonych do zleceń, podłączonych do tej oferty](przegl)), generuje protokoły przeglądu. Wygenerowane pliki zastępują te orginalne obecne w rekordach. Można je podejrzeć w polu typu lookup na samym dole strony.
+
+Po zakończeniu pracy automatyzacji "Generuj PP" jest ustawiane na "NIE"
+
+<Note>
+  Jeżeli po kliknięciu przycisku po długim czasie jego wygląd nadal nie wróci do pierwotnej formy a protokoły się nie dodadzą, może to znaczyć że wstąpił błąd w skrypcie "Generuj PP z O z N".
+</Note>
+
+### Przycisk "Generuj prot. diagn."
+
+Uruchamia automatyzację która to znajduje rekordy zleceń serwisowych podłączonych do tej oferty i w każdym z nich ustawia checkbox "Generuj protokół diagnostyki" na "TAK". Ta zmiana jest wykrywana przez skrypt "Generuj protokół diagnostyki" który to dla zmiany w każdym rekordzie generuje plik pdf protokołu diagnostyki. Po zakończeniu skryptu checkboxy są zmienane spowrotem na "NIE". 
+
+Wygenerowane protokoły diagnostyki można zobaczyć na dole strony w polu typu lookup.
 
 ### Typ
 
@@ -112,7 +130,7 @@ Warunkuje widoczność odpowiednich dla siebie pól. Obecnie są 4 typy.
 
 ### Data Wystawienia
 
-Ustawiana automatycznie na aktualną datę w momencie utworzenia oferty. 
+Ustawiana automatycznie na aktualną datę w momencie utworzenia oferty.
 
 ### Dni na akceptacje
 
@@ -120,17 +138,17 @@ Domyślnie ustawione na 30. Służy do obliczenia ważności oferty.
 
 ### Numer oferty sugerowany
 
-Pole typu "formula" mające na celu przechowywanie sugerowanego numeru oferty w sytuacji gdy numer został omyłkowo usunięty. Działą wg. wzoru O-{[Lp](Lp)}-{[miesiąc wystawienia](data%20wystawienia)}-{[rok wystawienia](#data%20wystawienia)}. 
+Pole typu "formula" mające na celu przechowywanie sugerowanego numeru oferty w sytuacji gdy numer został omyłkowo usunięty. Działą wg. wzoru O-[Lp](#Lp)-[miesiąc wystawienia](##data%20wystawienia)-[rok wystawienia](##data%20wystawienia).
 
 ### Numer oferty
 
-Wyświetlany na samej górze ekranu. Po utworzeniu oferty, automatycznie nadawany przez automatyzacje wg. wzoru O-[Lp](#Lp)-[miesiąc wystawienia](##data%20wystawienia)-[rok wystawienia](##data%20wystawienia). 
+Wyświetlany na samej górze ekranu. Po utworzeniu oferty, automatycznie nadawany przez automatyzacje wg. wzoru O-[Lp](#Lp)-[miesiąc wystawienia](##data%20wystawienia)-[rok wystawienia](##data%20wystawienia).
 
-Po automatycznym uzupełnieniu, być ręcznie edytowany. 
+Po automatycznym uzupełnieniu, być ręcznie edytowany.
 
 ### Kontynuacja
 
-Służy do utworzenia oferty kontynuacyjnej. Za pomocą tego pola wybieramy ofertę poprzedzającą do aktualnej. 
+Służy do utworzenia oferty kontynuacyjnej. Za pomocą tego pola wybieramy ofertę poprzedzającą do aktualnej.
 
 Jeżeli poprzednia oferta nie jest obecna w bazie, możemy ją w w tym miejscu utworzyć
 
@@ -142,3 +160,222 @@ Jeżeli poprzednia oferta nie jest obecna w bazie, możemy ją w w tym miejscu u
 />
 
 ### Ważność oferty
+
+Data do której klient ma czas na akceptacje tej oferty. Jest równa [dacie wystawienia](#data%20wystawienia) + [dni na akcepację](#dni%20na%20akceptacje).
+
+### Lp
+
+Liczba pojedyńcza rekordu. Liczona od początku roku. Przy kreacji rekordu automat wyszukuje najwyższą liczbę Lp w tym roku i dodaje do niej 1.
+
+### Nr. Sprawy
+
+W przypadku typu "serwis"- wypełniany numerem zlecenia serwisowego.
+
+### Nr. zgłoszenia klienta
+
+Informacja o pochodzeniu oferty. W zależności od sytuacji może się tam znajdować:
+
+- "Po przeglądzie"-  jeżeli oferta jest na naprawę po przeglądzie.
+- Numer zgłoszenia klienta- jeżeli dostaniemy od klienta numer który przypisał tej sprawie.
+- "Mail" + data- jeżeli oferta jest odpowiedzią na mailowe zapytanie ofertowe.
+
+### Szpital
+
+Tutaj wybieramy klienta danej oferty. Za pomocą tego pola łączymy ofertę z pozycją w arkuszu szpitali.
+
+Z tego miejsca nie można dodać nowej pozycji. By utworzyć rekord klienta należy skorzystać z interfejsu [Klienci]().
+
+Automatycznie wypełniane przy [ofercie ze zlecenia](/Oferta%20ze%20zlecenia).
+
+### Płatnik
+
+Jest to jednostka która płaci za ofertę. Pole, tak jak "Szpital", jest referencją do arkusza szpitali. Po wyborze szpitala jest ono automatycznie wypełniane wg. informacji o płatniku z bazy.
+
+Z uwagi na to że nie zawsze płatnik danego klienta będzie opłacał tą ofertę, to pole można ręcznie edytować. Jest to szczególnie przydatne w przypadku np. napraw gwarancyjnych gdize płatnikiem jest producent sprzętu.
+
+Z tego miejsca również nie można dodawać nowych rekordów.
+
+### Termin płatności
+
+Automatycznie wypełniany informacjami z bazy dotyczących płatnika. Można ręcznie zmienić.
+
+### Kontakt, Email
+
+Informacje kontaktowe (imie i nazwisko + adres email), pobrane z bazy z rekordu wybranego szpitala.
+
+Pola typu "lookup", ukazują informacje w czasie rzeczywistym. Oznacza to że niezależnie od daty utworzenia oferty, te pola zawsze zawierają aktualne dane kontaktowe przypisane do tego klienta.
+
+### Urządzenie, Producent, Model, Nr SN, nr INW
+
+![obraz.png](/images/obraz.png)
+
+Informacje dotyczące ofertowanego urządzenia.
+
+W przypadku oferty ze zlecenia, wypełniane automatycznie.
+
+W przypadku nowej oferty przeglądu, pola "nr INW" i "Urządzenie" wypełniane tekstem "Na liście".
+
+### Czas Realizacji
+
+Automatycznie wypełniane tekstem "Do uzgodnienia".
+
+W przypadku np. oczekiwania na części, można wypełnić przewidywanym czasem oczekiwania.
+
+### Wysyłka/dojazd
+
+Osobna pozycja na ofercie mówiąca o koszcie dojazdu/wysyłki.
+
+- Dojazd- koszt dojazdu serwisanta do klienta. Dojazd jest płatny dla klientów z poza powiatu Poznańskiego.  Koszt netto jest automatycznie wyliczany, z arkusza szpitali pobierana jest odległość do klienta (kilometry drogą, liczone od warsztatu Kopczyńskiego).\
+  Wartość netto = ( odległość x 1,5 x 2 ) zł.  W dojazd powinny być również wpisane koszty hotelu jeżeli taki byłby wymagany. Vat transportu jest ustalany w zależności od [typu urządzeń](sd).
+- Wysyłka/Wysyłka zwrotna- koszt jednej wysyłki do klienta. Automatyzacja ustawia koszt netto na 60zł i transport vat na 8%.
+- Wysyłka w dwie strony- koszt jednej wysyłki do klienta. Automatyzacja ustawia koszt netto na 80zł i transport vat na 8%.
+
+  <img
+    src="/images/Zrzutekranu2025-10-09112724.png"
+    alt="Zrzut ekranu 2025-10-09 112724.png"
+    title="Zrzut ekranu 2025-10-09 112724.png"
+    style={{ width:"80%" }}
+  />
+
+  <img
+    src="/images/Zrzutekranu2025-10-09113916.png"
+    alt="Zrzut ekranu 2025-10-09 113916.png"
+    title="Zrzut ekranu 2025-10-09 113916.png"
+    style={{ width:"82%" }}
+  />
+
+### Uwagi template
+
+Pole gdzie z arkusza "Uwagi template" możemy wybrać ustandaryzowane uwagi które będą widoczne na dole oferty. 
+
+Możemy dodać nowy rekord uwagi klikając w "+". Ukaże nam się wtedy okno dodawania wpisu. W "Name" należy wpisać treść uwagi, natomiast w notes krótkie streszczenie zawartości.
+
+Możemy edytować wpisy uwag. By tego dokonać należy kliknąć w kartę uwagi któa to została już wcześniej przypisana przez nas do oferty przez przycisk "Add record".
+
+<img
+  src="/images/Zrzutekranu2025-10-09114329.png"
+  alt="Zrzut ekranu 2025-10-09 114329.png"
+  style={{ width:"60%" }}
+/>
+
+<img
+  src="/images/Zrzutekranu2025-10-09114358.png"
+  alt="Zrzut ekranu 2025-10-09 114358.png"
+  title="Zrzut ekranu 2025-10-09 114358.png"
+  style={{ width:"78%" }}
+/>
+
+### Wystawiona przez
+
+W tym polu wybiera się osobę z arkusza "Serwisanci" która odpowiedzialna była za utworzenie tej oferty.
+
+Wybór jest ograniczony jedynie do personelu który w polu "Permisje" posiada wartość "Admin".
+
+<img
+  src="/images/Zrzutekranu2025-10-09115244.png"
+  alt="Zrzut ekranu 2025-10-09 115244.png"
+  title="Zrzut ekranu 2025-10-09 115244.png"
+  style={{ width:"40%" }}
+/>
+
+<Note>
+  Wbrew mylącej nazwie, arkusz "Serwisanci" zawiera również pracowników czysto administracyjnych. Wgląd do arkuszu jest dostępny w interfejsie "Kadra".
+</Note>
+
+### Edytuj
+
+# Typy ofert i ich pola
+
+## Oferta "Serwis"
+
+### Dotyczy urządzeń
+
+Pole wyboru służące do określenia jakiego typu jest urządzenie na które jest oferta. Warunkuje widoczność pól "Treść wykonanej usługi dla aparatury med." oraz ""dla aparatury lab.".
+
+- Medyczne- czyli urządzenie podlegające 8% vat. Udostępnia do edycji jedno pole treści usługi i kwoty.
+- Laboratoryjne- czyli urządzenie podlegające 23% vat. Udostępnia do edycji jedno pole treści usługi i kwoty.
+- Medyczne i Laboratoryjne- żadka sytuacja gdy np. urządzenie jest medyczne lecz wykonano jakąś czynność która musi być wyceniona po standardowym 23% vat. Udostępnia do edycji dwa pola treści usługi i kowty
+
+### Zlecenia serwisowe
+
+Tutaj wybieramy rekord z arkusza zleceń, którego to dotyczy dana oferta.
+
+W celu wglądu w szczegóły i/lub edycji wpisu, można w niego kliknąć. Otworzy się wtedy karta szczegółów rekordu.
+
+<img
+  src="/images/Zrzutekranu2025-10-09102949.png"
+  alt="Zrzut ekranu 2025-10-09 102949.png"
+  style={{ width:"57%" }}
+/>
+
+### Link to przeglądy (from Zlecenia serwisowe)
+
+W tym miejscu pokazywany jest rekord przeglądu przypięty do zlecenia serwisowego.
+
+To pole jest typu "lookup", czyli na żywo pokazuje aktualne dane dotyczące przypiętego przeglądu.
+
+W przypadku zleceń które nie mają przypiętego przeglądu pole może nie być widoczne.
+
+W celu wglądu w szczegóły i/lub edycji wpisu, można w niego kliknąć. Otworzy się wtedy karta szczegółów rekordu.
+
+### Treść wykonanej usługi
+
+Miejsce na wpisanie treści wykonanej usługi oraz jej wyceny.
+
+<img
+  src="/images/Zrzutekranu2025-10-09105413.png"
+  alt="Zrzut ekranu 2025-10-09 105413.png"
+  title="Zrzut ekranu 2025-10-09 105413.png"
+  style={{ width:"87%" }}
+/>
+
+### Części
+
+<img
+  src="/images/Zrzutekranu2025-10-09105935.png"
+  alt="Zrzut ekranu 2025-10-09 105935.png"
+  title="Zrzut ekranu 2025-10-09 105935.png"
+  style={{ width:"93%" }}
+/>
+
+W tym miejscu dodajemy rekordy części użytych/potrzebnych do naprawy.
+
+Pozycje stworzone w tej tabelce powstają w arkuszu "Magazyn przepływy". Ta tabelka poprostu pokazuje nam rekordy z tamtego arkusza które to połączone są z tą ofertą.
+
+W przypadku tworzenia oferty ze zlecenia, do oferty przyłączane są te same rekordy które posiadają referencje do wybranej naprawy. W innym przypadku musimy ręcznie utworzyć rekordy.
+
+**Zaciąganie danych z magazynu**
+
+Jeżeli ta część jest obecna w arkuszu "Magazyn", możemy ją wybrać w odpowiednim polu.
+
+<img
+  src="/images/Zrzutekranu2025-10-09110534.png"
+  alt="Zrzut ekranu 2025-10-09 110534.png"
+  title="Zrzut ekranu 2025-10-09 110534.png"
+  style={{ width:"35%" }}
+/>
+
+Spowoduje to zaciągnięcie danych z magazynu do takich pól jak "Nazwa dla klienta", "Stawka Vat", "Cena sprzedaży netto". Dodatkowo w polu "Zdj (from Magazyn)", pojawią się zdjęcia podpięte do rekordu magazynu (pole typu lookup).
+
+Warto pamiętać że nie licząc "Zdj", dane są do tych pól zaciągane jedynie w momencie połączenia z rekordem magazynu. Oznacza to że jakiekolwiek zmiany, a nawet usunięcie rekordu w magazynie nie wpłynie na informacje obecne w rekordzie przepływu magazynu. Tak samo (z wyjątkiem Nazwy dla klienta) wszelkie zmiany w tym rekordzie nic nie zmienią w magazynie.
+
+**Nazwa dla klienta**
+
+Uproszczona formułka informująca o charakterze użytej części. W przypadku części pokazywanych na ofercie, ta nazwa będzie wyświetlana.
+
+- 384 Akumulator 12V/1.3Ah MW POWER =\> Akumulator
+- 84 Przewód zasilania spirala z konektorami HILL ROM =\> Przewód zasilania spiralny
+- 298 Bateria 3V CR2032 GP =\> Bateria
+
+**Wyświetl na ofercie**
+
+Domyślnie "TAK". Warunkuje czy część ma zostać wyświetlona jako osobna pozycja na ofercie czy jej wartość ma zostać doliczona do wartości usługi z tym samym vat.
+
+Jeżeli nie ma usługi z tym samym vat co część to zostanie ona zawsze wypisana jako osobna pozycja na ofercie.
+
+<img
+  src="/images/Zrzutekranu2025-10-09112528.png"
+  alt="Zrzut ekranu 2025-10-09 112528.png"
+  title="Zrzut ekranu 2025-10-09 112528.png"
+  style={{ width:"63%" }}
+/>
