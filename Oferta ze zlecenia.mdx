@@ -1,83 +1,79 @@
 ---
 title: "Oferta ze zlecenia"
-description: ""
 ---
 
-
-
 <Frame>
-  <img src="/images/Oferty-ze-zlecenia.png" alt="Zrzut ekranu z interfejsu: Oferta ze zlecenia" style={{ borderRadius: '0.5rem' }} />
+  <img
+    src="/images/Oferty-ze-zlecenia.png"
+    alt="Zrzut ekranu z interfejsu: Oferta ze zlecenia"
+    style={{ borderRadius:"0.5rem" }}
+  />
 </Frame>
 
 <AccordionGroup>
-  <Accordion icon="" title="Ograniczenia interfejsu">
-    Na tej stronie interfejsu, używane są przyciski aktywujące skrypty (skrypt generowania oferty).
-    Niestety, takie przyciski mogą jedynie być na stronie typu "blank", która to ma kilka ograniczeń.
-    Strony tego typu nie mogą być wyświetlane na aplikacji mobilnej Airtable.
-    Nie można też zastosować przycisków pozwalajacych na dokładną customizację filtrowania/sortowania/grupowania.
-    Z uwagi na to ograniczenie, możliwe do wyboru filtry są predefiniowane a samo okno wyboru, zawsze widoczne na interfejsie.
-</Accordion>
+  <Accordion title="Ograniczenia interfejsu" icon="circle-exclamation">
+    Na tej stronie interfejsu, używane są przyciski aktywujące skrypty (skrypt generowania oferty). Niestety, takie przyciski mogą jedynie być na stronie typu "blank", która to ma kilka ograniczeń. Strony tego typu nie mogą być wyświetlane na aplikacji mobilnej Airtable. Nie można też zastosować przycisków pozwalajacych na dokładną customizację filtrowania/sortowania/grupowania. Z uwagi na to ograniczenie, możliwe do wyboru filtry są predefiniowane a samo okno wyboru, zawsze widoczne na interfejsie.
+  </Accordion>
 </AccordionGroup>
-
-
 
 ## Pole wyboru filtrów
+
 <Frame>
-  <img src="\images\Oferty-ze-zlecenia-filtry — kopia.png" alt="Zrzut ekranu z interfejsu: Oferta ze zlecenia, filtry" style={{ borderRadius: '0.5rem' }} />
+  <img
+    src="/images/Oferty-ze-zlecenia-filtry — kopia.png"
+    alt="Zrzut ekranu z interfejsu: Oferta ze zlecenia, filtry"
+    style={{ borderRadius:"0.5rem" }}
+  />
 </Frame>
 
-Filtry wybrane w tym polu warunkują, jakie rekordy będą widoczne na [liście wyboru rekordów](#lista-wyboru-rekord%C3%B3w).
-Domyślnie ustawione filtrowanie wyszukuje rekordy zleceń serwisowych, których stan jest "PO" lub "ZAKOŃCZONE".
-
+Filtry wybrane w tym polu warunkują, jakie rekordy będą widoczne na [liście wyboru rekordów](#lista-wyboru-rekord%C3%B3w). Domyślnie ustawione filtrowanie wyszukuje rekordy zleceń serwisowych, których stan jest "PO" lub "ZAKOŃCZONE".
 
 <AccordionGroup>
-  <Accordion icon="magnifying-glass" title="Wyszukiwanie filtrami">
-  Wybrane filtry dają wiele możliwości wyszukiwania rekordów. 
-  Nie wszystkie opcje wyszukiwania są oczywiste.
-  
-  Używając dwóch warunków "Data", możemy zrobić sobie widełki czasowe. 
-  Wystarczy ustawić Data is after (początek widełek), oraz Data is before (koniec widełek).
+  <Accordion title="Wyszukiwanie filtrami" icon="magnifying-glass">
+    Wybrane filtry dają wiele możliwości wyszukiwania rekordów. Nie wszystkie opcje wyszukiwania są oczywiste.
 
-  Znając formatowanie nazw klientów, możemy również wyszukiwać szpitale po mieście.
-  Wystarczy wybrać Szpital/Klient contains (nazwa miasta). 
-  I tak, wpisując np. Poznań, zobaczymy rekordy z Wrzoska, Przybyszewskiego, Grunwaldzkiej itd. 
-</Accordion>
+    Używając dwóch warunków "Data", możemy zrobić sobie widełki czasowe. Wystarczy ustawić Data is after (początek widełek), oraz Data is before (koniec widełek).
+
+    Znając formatowanie nazw klientów, możemy również wyszukiwać szpitale po mieście. Wystarczy wybrać Szpital/Klient contains (nazwa miasta). I tak, wpisując np. Poznań, zobaczymy rekordy z Wrzoska, Przybyszewskiego, Grunwaldzkiej itd.
+  </Accordion>
 </AccordionGroup>
-
 
 ## Lista wyboru rekordów
 
 <Frame>
-  <img src="/images/Oferty-ze-zlecenia-lista.png" alt="Zrzut ekranu z interfejsu: Oferta ze zlecenia" style={{ borderRadius: '0.5rem' }} />
+  <img
+    src="/images/Oferty-ze-zlecenia-lista.png"
+    alt="Zrzut ekranu z interfejsu: Oferta ze zlecenia"
+    style={{ borderRadius:"0.5rem" }}
+  />
 </Frame>
 
 ### Rekordy na liście
 
-Tutaj widoczne są rekordy z arkusza "Zlecenia serwisowe", odfiltrowane według [wybranych filtrów](#pole-wyboru-filtr%C3%B3w). 
-Przez tą listę mamy "wgląd" w część rekordów zleceń serwisowych. Znaczy to że każda zmiana w widocznym tu rekordzie, 
-edytuje go również na arkuszu i wszytkich "wglądowych" listach. 
+Tutaj widoczne są rekordy z arkusza "Zlecenia serwisowe", odfiltrowane według [wybranych filtrów](#pole-wyboru-filtr%C3%B3w). Przez tą listę mamy "wgląd" w część rekordów zleceń serwisowych. Znaczy to że każda zmiana w widocznym tu rekordzie, edytuje go również na arkuszu i wszytkich "wglądowych" listach.
 
 ### Wybieranie rekordów
 
 <Frame>
-  <img src="/images/Oferty-ze-zlecenia-wybór.gif" alt="Nagranie- Wybór zleceń" style={{ borderRadius: '0.5rem' }} />
+  <img
+    src="/images/Oferty-ze-zlecenia-wybór.gif"
+    alt="Nagranie- Wybór zleceń"
+    style={{ borderRadius:"0.5rem" }}
+  />
 </Frame>
 
-Rekordy z których chcemy wygenerować oferty, wybieramy zaznaczając po lewej stronie przycisk "Generuj...". 
-Ten przycisk tak naprawde nie "Zaznacza" rekordu a jedynie zmienia dane w polu "Generuj ofertę" na "TAK".
-To pozwoli nam w następnym kroku skorzystać z automatyzacji która wyszukuje wszystkie zlecenia serwisowe które mają w tym polu "TAK" by wygenerować z nich ofertę.
+Rekordy z których chcemy wygenerować oferty, wybieramy zaznaczając po lewej stronie przycisk "Generuj...". Ten przycisk tak naprawde nie "Zaznacza" rekordu a jedynie zmienia dane w polu "Generuj ofertę" na "TAK". To pozwoli nam w następnym kroku skorzystać z automatyzacji która wyszukuje wszystkie zlecenia serwisowe które mają w tym polu "TAK" by wygenerować z nich ofertę.
 
-Nad listą, na lewo od filtrów widzimy również licznik oraz 3 przyciski. Licznik zlicza rekordy z danym statusem w CAŁEJ BAZIE, znaczy to że nawet gdyby rekord był 
-odfiltrowany to nadal będzie on podliczony. Funkcja ta ma na celu ochronę przed błędami gdzie powstanie oferta z rekordu z którego nie miała powstać. 
+Nad listą, na lewo od filtrów widzimy również licznik oraz 3 przyciski. Licznik zlicza rekordy z danym statusem w CAŁEJ BAZIE, znaczy to że nawet gdyby rekord był odfiltrowany to nadal będzie on podliczony. Funkcja ta ma na celu ochronę przed błędami gdzie powstanie oferta z rekordu z którego nie miała powstać.
 
-W przypadku gdy zaznaczone jest więcej rekordów niż powinno być, można skorzystać z przycisku "Odznacz wszystkie". Odpala on automatyzację która znajduje zaznaczone rekordy i je odznacza. 
+W przypadku gdy zaznaczone jest więcej rekordów niż powinno być, można skorzystać z przycisku "Odznacz wszystkie". Odpala on automatyzację która znajduje zaznaczone rekordy i je odznacza.
 
 ## Generowanie oferty
 
-Po wciśnięciu przycisku "Generuj ofertę", odpalona zostanie automatyzacja która właśnie tym się zajmuje. Dla każdego wybranego rekordu powstanie jedna oferta (funkcja airtable "repeat for" 
-jest ograniczona do 1000 akcji, dlatego można wybrać maksymalnie 1000 rekordów- aktualnie ten limit nam raczej nie grozi). 
+Po wciśnięciu przycisku "Generuj ofertę", odpalona zostanie automatyzacja która właśnie tym się zajmuje. Dla każdego wybranego rekordu powstanie jedna oferta (funkcja airtable "repeat for" jest ograniczona do 1000 akcji, dlatego można wybrać maksymalnie 1000 rekordów- aktualnie ten limit nam raczej nie grozi).
 
 Oferta powstała ze zlecenia, będzie miała wypełnione część pól.
+
 - Data wystawienia zostanie ustawiona na aktualną datę.
 - Czas realizacji zostanie ustawiony na "Do uzgodniania".
 - Jeżeli typ zlecenia to "Po przeglądzie", numer zgłoszenia klienta będzie wypełniony tekstem "Po przeglądzie".
@@ -88,9 +84,7 @@ Oferta powstała ze zlecenia, będzie miała wypełnione część pól.
 By przejść do wygenerowane oferty, należy wcisnąć przycisk "Do ofert", lub wybrać Ofertowanie, Oferty w kolumnie nawigacji po lewej stronie ekranu.
 
 <CardGroup cols={1}>
-
-<Card title="Edycja utworzonej oferty" icon="pen-to-square" href="/Nowa%20oferta">
-  
-</Card>
-
+  <Card title="Edycja utworzonej oferty" icon="pen-to-square" href="/Nowa%20oferta">
+    
+  </Card>
 </CardGroup>
