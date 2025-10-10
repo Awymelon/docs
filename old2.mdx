@@ -1,0 +1,383 @@
+---
+title: "Nowa oferta"
+---
+
+Oferta przeglądOferta przegląd
+
+<Frame>
+  <img
+    src="/images/Oferty.png"
+    alt="Zrzut ekranu z interfejsu: Oferta ze zlecenia"
+    style={{ borderRadius:"0.5rem" }}
+    title="s"
+  />
+</Frame>
+
+To jest interfejs typu "Record review". Po lewej stronie ekranu wyświetlana jest lista rekordów. Szczegóły danego rekordu (razem z przyciskami mogącymi na niego wpłynąć), wyświetlane są na prawo od listy.
+
+Ten interfejs jest "wglądem" w arkusz ofert. To znaczy że wszystkie zmiany tutaj wprowadzone, są wprowadzane w rekordzie w bazie danych.
+
+## Lista rekordów
+
+### Właściwości listy
+
+<Frame>
+  <img
+    src="\images\Oferty-filtry.png"
+    alt="Zrzut ekranu z interfejsu: Oferta- właściwości listy"
+    style={{ borderRadius:"0.5rem" }}
+  />
+</Frame>
+
+W prawym górnym rogu widzimy przyciski.
+
+- Z symbolem plusa, służy do [utworzenia nowej oferty]().
+- Z kwadratem i strzałką, otwieta w nowym oknie stronę [oferta ze zlecenia](Oferta%20ze%20zlecenia).
+- 3 kropki, pokazują dodatkowe opcje tj. wydrukowanie rekordu.
+
+Poniżej dużych przycisków widzimy mniejsze, odpowiedzialne za właściwości listy rekordów.
+
+- Po lewej "group", pozwala na grupowanie rekordów
+- Po środku "filter", pozwala na filtrowanie rekordów według dowolnych pól w arkuszu
+- Po prawej "sort", pozwala na wybór sortowania listy, domyślnie wg. daty utworzenia
+
+Po lewej stronie, poniżej napisu "Oferty" możemy wybrać wzór filtrowania. Domyślnie pokazywane są wszystkie rekordy. Można również wybrać by pokazywane były wygenerowane/nie wygenerowane oferty.
+
+Na samym dole jest pasek wyszukiwania. Możemy tam wyszukać rekord po dowolnej rzeczy obecnej  w [podsumowaniu rekordu](Podsumowanie%20rekordu) (numer oferty/typ/szpital).
+
+### Podsumowanie rekordu
+
+<Frame>
+  <img
+    src="/images/Oferty-podsumowanie.png"
+    alt="Zrzut ekranu z interfejsu: Oferta ze zlecenia"
+    style={{ borderRadius:"0.5rem" }}
+  />
+</Frame>
+
+#### Pasek i załącznik
+
+Po lewej stronie wyświetlany jest pasek statusu uzależniony od tego czy dana oferta jest w [trybie edycji](#edytuj).
+
+- Ciemnoszary pasek- rekord w trybie edycji (jak widać na obrazku powyżej).
+- Jasnoszary pasek- rekord poza trybem edycji.
+
+Po prawej od paska widoczne jest pole w którym wyświetlany jest plik oferty. Mógł on zostać wygenerowany lub wklejony ręcznie do rekordu.
+
+<AccordionGroup>
+  <Accordion title="Wnioskowanie ze statusu i pliku" icon="file-chart-column">
+    Jeżeli status wskazuje na to że rekord jest w trybie edycji i nie widać pliku, można wywnioskować że nie był on jeszcze wygenerowany.
+
+    Przypadek gdy plik jest obecny a rekord nie jest w trybie edycji świadczy o tym że oferta została wygenerowana i od tego czasu nic w treści rekordu nie było zmieniane.
+
+    Warto natomiast zwrócić uwagę na rekordy w trybie edycji z załącznikiem.
+
+    Może to wskazywać na to że jakieś zmiany zostały wprowadzone w rekordzie już po wygenerowaniu pliku.
+
+    Warto wtedy sprawdzić czy aby napewno to co jest w wygenerowanym PDFie zgadza się z danymi w rekordzie.
+
+    Po sprawdzeniu poprawności, w takim rekordzie można wyłączyć tryb edycji, trzeba jednak pamiętać że bez względu na to czy były jakieś zmiany, wygenerowany zostanie nowy plik PDF na podstawie rekordu.
+  </Accordion>
+</AccordionGroup>
+
+#### Numer, typ, klient
+
+Na prawo od załącznika, widzimy 3 linijki.
+
+- Pierwsza to [numer oferty]().
+- Druga zawiera [typ]() oferty.
+- Trzecia zawiera skrót [klienta]().
+
+## Dodawanie nowej oferty
+
+<Frame>
+  <img
+    src="/images/Oferty-nowa.png"
+    alt="Zrzut ekranu, interfejs oferty, nowa oferta"
+    style={{ borderRadius:"0.5rem" }}
+  />
+</Frame>
+
+Po wciśnięciu przycisku z plusem (tego nad listą rekordów), otwiera się okno tworzenia nowej oferty. W tym oknie jedynie wybieramy typ (warunkujący [widoczność pól]() w szczegółach rekordu)
+
+# Edycja nowej oferty- wspólne pola
+
+![Zrzut ekranu 2025-10-09 105143.png](/images/Zrzutekranu2025-10-09105143.png)
+
+### Typ
+
+Warunkuje widoczność odpowiednich dla siebie pól. Obecnie są 4 typy.
+
+- Serwis- oferta na zlecenie serwisowe.
+- Przegląd- oferta na jeden lub więcej przeglądów.
+- Części- oferta na sprzedaż części.
+- Diagnostyka- oferta na diagnostykę urządzenia.
+
+### Data Wystawienia
+
+Ustawiana automatycznie na aktualną datę w momencie utworzenia oferty.
+
+### Dni na akceptacje
+
+Domyślnie ustawione na 30. Służy do obliczenia ważności oferty.
+
+### Numer oferty sugerowany
+
+Pole typu "formula" mające na celu przechowywanie sugerowanego numeru oferty w sytuacji gdy numer został omyłkowo usunięty. Działą wg. wzoru O-[Lp](#Lp)-[miesiąc wystawienia](##data%20wystawienia)-[rok wystawienia](##data%20wystawienia).
+
+### Numer oferty
+
+Wyświetlany na samej górze ekranu. Po utworzeniu oferty, automatycznie nadawany przez automatyzacje wg. wzoru O-[Lp](#Lp)-[miesiąc wystawienia](##data%20wystawienia)-[rok wystawienia](##data%20wystawienia).
+
+Po automatycznym uzupełnieniu, być ręcznie edytowany.
+
+### Kontynuacja
+
+Służy do utworzenia oferty kontynuacyjnej. Za pomocą tego pola wybieramy ofertę poprzedzającą do aktualnej.
+
+Jeżeli poprzednia oferta nie jest obecna w bazie, możemy ją w w tym miejscu utworzyć
+
+<img
+  src="/images/Zrzutekranu2025-10-09093636.png"
+  alt="Zrzut ekranu 2025-10-09 093636.png"
+  title="Zrzut ekranu 2025-10-09 093636.png"
+  style={{ width:"46%" }}
+/>
+
+### Ważność oferty
+
+Data do której klient ma czas na akceptacje tej oferty. Jest równa [dacie wystawienia](#data%20wystawienia) + [dni na akcepację](#dni%20na%20akceptacje).
+
+### Lp
+
+Liczba pojedyńcza rekordu. Liczona od początku roku. Przy kreacji rekordu automat wyszukuje najwyższą liczbę Lp w tym roku i dodaje do niej 1.
+
+### Nr. Sprawy
+
+W przypadku typu "serwis"- wypełniany numerem zlecenia serwisowego.
+
+### Nr. zgłoszenia klienta
+
+Informacja o pochodzeniu oferty. W zależności od sytuacji może się tam znajdować:
+
+- "Po przeglądzie"-  jeżeli oferta jest na naprawę po przeglądzie.
+- Numer zgłoszenia klienta- jeżeli dostaniemy od klienta numer który przypisał tej sprawie.
+- "Mail" + data- jeżeli oferta jest odpowiedzią na mailowe zapytanie ofertowe.
+
+### Szpital
+
+Tutaj wybieramy klienta danej oferty. Za pomocą tego pola łączymy ofertę z pozycją w arkuszu szpitali.
+
+Z tego miejsca nie można dodać nowej pozycji. By utworzyć rekord klienta należy skorzystać z interfejsu [Klienci]().
+
+Automatycznie wypełniane przy [ofercie ze zlecenia](/Oferta%20ze%20zlecenia).
+
+### Płatnik
+
+Jest to jednostka która płaci za ofertę. Pole, tak jak "Szpital", jest referencją do arkusza szpitali. Po wyborze szpitala jest ono automatycznie wypełniane wg. informacji o płatniku z bazy.
+
+Z uwagi na to że nie zawsze płatnik danego klienta będzie opłacał tą ofertę, to pole można ręcznie edytować. Jest to szczególnie przydatne w przypadku np. napraw gwarancyjnych gdize płatnikiem jest producent sprzętu.
+
+Z tego miejsca również nie można dodawać nowych rekordów.
+
+### Termin płatności
+
+Automatycznie wypełniany informacjami z bazy dotyczących płatnika. Można ręcznie zmienić.
+
+### Kontakt, Email
+
+Informacje kontaktowe (imie i nazwisko + adres email), pobrane z bazy z rekordu wybranego szpitala.
+
+Pola typu "lookup", ukazują informacje w czasie rzeczywistym. Oznacza to że niezależnie od daty utworzenia oferty, te pola zawsze zawierają aktualne dane kontaktowe przypisane do tego klienta.
+
+### Urządzenie, Producent, Model, Nr SN, nr INW
+
+![obraz.png](/images/obraz.png)
+
+Informacje dotyczące ofertowanego urządzenia.
+
+W przypadku oferty ze zlecenia, wypełniane automatycznie.
+
+W przypadku nowej oferty przeglądu, pola "nr INW" i "Urządzenie" wypełniane tekstem "Na liście".
+
+### Czas Realizacji
+
+Automatycznie wypełniane tekstem "Do uzgodnienia".
+
+W przypadku np. oczekiwania na części, można wypełnić przewidywanym czasem oczekiwania.
+
+### Wysyłka/dojazd
+
+Osobna pozycja na ofercie mówiąca o koszcie dojazdu/wysyłki.
+
+- Dojazd- koszt dojazdu serwisanta do klienta. Dojazd jest płatny dla klientów z poza powiatu Poznańskiego.  Koszt netto jest automatycznie wyliczany, z arkusza szpitali pobierana jest odległość do klienta (kilometry drogą, liczone od warsztatu Kopczyńskiego).\
+  Wartość netto = ( odległość x 1,5 x 2 ) zł.  W dojazd powinny być również wpisane koszty hotelu jeżeli taki byłby wymagany. Vat transportu jest ustalany w zależności od [typu urządzeń](sd).
+- Wysyłka/Wysyłka zwrotna- koszt jednej wysyłki do klienta. Automatyzacja ustawia koszt netto na 60zł i transport vat na 8%.
+- Wysyłka w dwie strony- koszt jednej wysyłki do klienta. Automatyzacja ustawia koszt netto na 80zł i transport vat na 8%.
+
+  <img
+    src="/images/Zrzutekranu2025-10-09112724.png"
+    alt="Zrzut ekranu 2025-10-09 112724.png"
+    title="Zrzut ekranu 2025-10-09 112724.png"
+    style={{ width:"80%" }}
+  />
+
+  <img
+    src="/images/Zrzutekranu2025-10-09113916.png"
+    alt="Zrzut ekranu 2025-10-09 113916.png"
+    title="Zrzut ekranu 2025-10-09 113916.png"
+    style={{ width:"82%" }}
+  />
+
+### Uwagi template
+
+Pole gdzie z arkusza "Uwagi template" możemy wybrać ustandaryzowane uwagi które będą widoczne na dole oferty.
+
+Możemy dodać nowy rekord uwagi klikając w "+". Ukaże nam się wtedy okno dodawania wpisu. W "Name" należy wpisać treść uwagi, natomiast w notes krótkie streszczenie zawartości.
+
+Możemy edytować wpisy uwag. By tego dokonać należy kliknąć w kartę uwagi któa to została już wcześniej przypisana przez nas do oferty przez przycisk "Add record".
+
+<img
+  src="/images/Zrzutekranu2025-10-09114329.png"
+  alt="Zrzut ekranu 2025-10-09 114329.png"
+  style={{ width:"60%" }}
+/>
+
+<img
+  src="/images/Zrzutekranu2025-10-09114358.png"
+  alt="Zrzut ekranu 2025-10-09 114358.png"
+  title="Zrzut ekranu 2025-10-09 114358.png"
+  style={{ width:"78%" }}
+/>
+
+### Wystawiona przez
+
+W tym polu wybiera się osobę z arkusza "Serwisanci" która odpowiedzialna była za utworzenie tej oferty.
+
+Wybór jest ograniczony jedynie do personelu który w polu "Permisje" posiada wartość "Admin".
+
+Imię i nazwisko będzie widoczne w mailu oraz na ofercie (razem z numerem telefonu z bazy).
+
+<img
+  src="/images/Zrzutekranu2025-10-09115244.png"
+  alt="Zrzut ekranu 2025-10-09 115244.png"
+  title="Zrzut ekranu 2025-10-09 115244.png"
+  style={{ width:"40%" }}
+/>
+
+![Zrzut ekranu 2025-10-10 115226.png](/images/Zrzutekranu2025-10-10115226.png)
+
+<Note>
+  Wbrew mylącej nazwie, arkusz "Serwisanci" zawiera również pracowników czysto administracyjnych. Wgląd do arkuszu jest dostępny w interfejsie "Kadra".
+</Note>
+
+### Usuń ofertę (3 kropki)
+
+Przycisk służy do usuwania oferty. Aktualnie po usunięciu oferty, jej numer nadal zostaje w zapisany w rekordzie. Przed usunięciem rekordu dobrze by było usunąć ten numer z pola tekstowego by uniknąć związanych z tym problemów. By edytować pole można kliknąć w rekord i wprowadzić zmiany na karcie szczegółów rekordu.
+
+### Wyślij mail
+
+Za pomocą rozszerzenia mailto, otwiera w domyślnej dla komputera przeglądarce/aplikacji mailowej, okno tworzenia maila. Automatycznie wypełnia tytuł, treść i adresata zgodnie z danymi w rekordzie oferty i bazie klientów. Plik pdf oferty trzeba ręcznie załączyć.
+
+Z uwagi na charakterystykę mailto, czasem może wyskoczyć okienko informujące o niebezpiecznym linku. Należy je zignorować.
+
+Przykładowy mail
+
+<img
+  src="/images/sd.png"
+  alt="sd.png"
+  title="sd.png"
+  style={{ width:"97%" }}
+/>
+
+### Generuj PDF oferty
+
+Zmienia status checkbox Edytuj na "TAK", jeżeli status już jest "TAK" to przycisk przyjmuje kolor biały i tekst "Oferta wygenerowana".
+
+### Edytuj
+
+Checkbox który przy zakliknięciu odpala [automatyzację generującą pdf](#generowanie-pdf).
+
+Jego zakliknięcie, ukrywa również pola możliwe do edycji, w ich miejsce ukazuje te same pola lecz bez możliwości zmiany.
+
+<Frame caption="Nie wciśnięty edytuj, ciemnoszary pasek- rekord w trybie edycji">
+  <img
+    src="/images/Zrzutekranu2025-10-10120102.png"
+    alt=""
+    style={{ borderRadius:"0.5rem" }}
+    title="s"
+  />
+</Frame>
+
+<Frame caption="Wciśnięty edytuj, jasnoszary pasek- rekord nie edytowalny">
+  <img
+    src="/images/Zrzutekranu2025-10-10115825.png"
+    alt=""
+    style={{ borderRadius:"0.5rem" }}
+    title="s"
+  />
+</Frame>
+
+## Pola specyficzne dla typów ofert
+
+<CardGroup cols={2}>
+  <Card title="Oferta serwis" icon="screwdriver-wrench" href="/Nowa%20oferta">
+    
+  </Card>
+  <Card title="Oferta przegląd" icon="passport" href="/Nowa%20oferta">
+    
+  </Card>
+  <Card title="Oferta części" icon="boxes-stacked" href="/Nowa%20oferta">
+    
+  </Card>
+  <Card title="Oferta diagnostyka" icon="gauge-low" href="/Nowa%20oferta">
+    
+  </Card>
+</CardGroup>
+
+# Generowanie PDF
+
+### Wysłanie zapytania do docs automator
+
+Automatyzacja przygotowuje dane i wysyła je przez api do docs automator.
+
+Po otrzymaniu zapytania, informacje są wklejane w odpowiednim miejscu na template oferty.
+
+<img
+  src="/images/Zrzutekranu2025-10-10121718.png"
+  alt="Zrzut ekranu 2025-10-10 121718.png"
+  title="Zrzut ekranu 2025-10-10 121718.png"
+  style={{ width:"65%" }}
+/>
+
+## Wypełnianie rekordu zleceń serwisowych
+
+### Stan admin
+
+Stan admin jest ustawiany na "Oferta"
+
+### Numer oferty
+
+Automatyzacja czyta zawartość pola "numer oferty". Jeżeli pole nie jest puste to znajduje wszystkie zapisane tam oferty i konwertuje je na wspólny wzór O-n-M-YYYY. Skrypt wykrywa różne style zapisów które to są oddzielone przecinkiem lub spacją. Usuwane są też duplikaty. Poniżej kilka przykładów konwersji numerów ofert.
+
+- O_22_3_2025 =\> O-22-3-2025
+- O112025, O12022025, O-1-1-2025 =\> O-1-1-2025, O-12-2-2025
+- O2362025 (akceptacja) O-1532-12-2025 =\> O-23-6-2025, O-1532-12-2025
+
+Dla ofert z 2025 i później, rekord zlecenia serwisowego jest łączony z ofertą za pomocą pola typu "link to". Jeżeli oferty nie ma w systemie jest ona dodawana.
+
+<Warning>
+  Z uwagi na tą funkcję, ważne jest by usunąć numer oferty z rekordu przy usuwaniu oferty. W przeciwnym razie, zlecenie serwisowe może zostać omyłkowo podłączone do nie swojej oferty o tym samym numerze.
+</Warning>
+
+### Realny koszt i vat
+
+Realny koszt zostaje wypełniony wartością usługi, natomiast vat jest ustawiony w zależności od wybranej opcji "[dotyczy urządzenia](sd)".
+
+## Dodawanie urządzenia w przypadku oferty naprawy
+
+Do bazy urządzeń dodawany jest rekord wypełniony danymi z oferty.
+
+## Wysyłanie danych do memento
+
+Gdy wystąpią zmiany w polach numer oferty, stan, stan admin, rekord jest oznaczany jako czekający na [synchroniację](s). W zależności od długości kolejki, rekord zostanie wysłany do memento. Czas oczekiwania powinien trwać 1-3min w przypadku pojedyńczych rekordów w kolejce.
