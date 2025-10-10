@@ -2,11 +2,14 @@
 title: "Nowa oferta"
 ---
 
+Oferta przeglądOferta przegląd
+
 <Frame>
   <img
     src="/images/Oferty.png"
     alt="Zrzut ekranu z interfejsu: Oferta ze zlecenia"
     style={{ borderRadius:"0.5rem" }}
+    title="s"
   />
 </Frame>
 
@@ -54,7 +57,7 @@ Na samym dole jest pasek wyszukiwania. Możemy tam wyszukać rekord po dowolnej 
 
 #### Pasek i załącznik
 
-Po lewej stronie wyświetlany jest pasek statusu uzależniony od tego czy dana oferta jest w [trybie edycji]().
+Po lewej stronie wyświetlany jest pasek statusu uzależniony od tego czy dana oferta jest w [trybie edycji](#edytuj).
 
 - Ciemnoszary pasek- rekord w trybie edycji (jak widać na obrazku powyżej).
 - Jasnoszary pasek- rekord poza trybem edycji.
@@ -100,24 +103,6 @@ Po wciśnięciu przycisku z plusem (tego nad listą rekordów), otwiera się okn
 # Edycja nowej oferty- wspólne pola
 
 ![Zrzut ekranu 2025-10-09 105143.png](/images/Zrzutekranu2025-10-09105143.png)
-
-### Przycisk "Generuj prot. przegl."
-
-Ustawia wartość checkbox "Generuj PP" w tej ofercie na "TAK". Jeżeli checkbox już jest "TAK" to przycisk jest biały i napis zmienia się na "Wygenerowano PP".
-
-Zmiana wartości pola Generuj PP jest wykrywana przez automatyzację która to dla wszystkich podłączonych przeglądów (czyli dla [przeglądów podłączonych do zleceń, podłączonych do tej oferty](przegl)), generuje protokoły przeglądu. Wygenerowane pliki zastępują te orginalne obecne w rekordach. Można je podejrzeć w polu typu lookup na samym dole strony.
-
-Po zakończeniu pracy automatyzacji "Generuj PP" jest ustawiane na "NIE"
-
-<Note>
-  Jeżeli po kliknięciu przycisku po długim czasie jego wygląd nadal nie wróci do pierwotnej formy a protokoły się nie dodadzą, może to znaczyć że wstąpił błąd w skrypcie "Generuj PP z O z N".
-</Note>
-
-### Przycisk "Generuj prot. diagn."
-
-Uruchamia automatyzację która to znajduje rekordy zleceń serwisowych podłączonych do tej oferty i w każdym z nich ustawia checkbox "Generuj protokół diagnostyki" na "TAK". Ta zmiana jest wykrywana przez skrypt "Generuj protokół diagnostyki" który to dla zmiany w każdym rekordzie generuje plik pdf protokołu diagnostyki. Po zakończeniu skryptu checkboxy są zmienane spowrotem na "NIE". 
-
-Wygenerowane protokoły diagnostyki można zobaczyć na dole strony w polu typu lookup.
 
 ### Typ
 
@@ -246,7 +231,7 @@ Osobna pozycja na ofercie mówiąca o koszcie dojazdu/wysyłki.
 
 ### Uwagi template
 
-Pole gdzie z arkusza "Uwagi template" możemy wybrać ustandaryzowane uwagi które będą widoczne na dole oferty. 
+Pole gdzie z arkusza "Uwagi template" możemy wybrać ustandaryzowane uwagi które będą widoczne na dole oferty.
 
 Możemy dodać nowy rekord uwagi klikając w "+". Ukaże nam się wtedy okno dodawania wpisu. W "Name" należy wpisać treść uwagi, natomiast w notes krótkie streszczenie zawartości.
 
@@ -271,6 +256,8 @@ W tym polu wybiera się osobę z arkusza "Serwisanci" która odpowiedzialna był
 
 Wybór jest ograniczony jedynie do personelu który w polu "Permisje" posiada wartość "Admin".
 
+Imię i nazwisko będzie widoczne w mailu oraz na ofercie (razem z numerem telefonu z bazy).
+
 <img
   src="/images/Zrzutekranu2025-10-09115244.png"
   alt="Zrzut ekranu 2025-10-09 115244.png"
@@ -278,104 +265,120 @@ Wybór jest ograniczony jedynie do personelu który w polu "Permisje" posiada wa
   style={{ width:"40%" }}
 />
 
+![Zrzut ekranu 2025-10-10 115226.png](/images/Zrzutekranu2025-10-10115226.png)
+
 <Note>
   Wbrew mylącej nazwie, arkusz "Serwisanci" zawiera również pracowników czysto administracyjnych. Wgląd do arkuszu jest dostępny w interfejsie "Kadra".
 </Note>
 
+### Usuń ofertę (3 kropki)
+
+Przycisk służy do usuwania oferty. Aktualnie po usunięciu oferty, jej numer nadal zostaje w zapisany w rekordzie. Przed usunięciem rekordu dobrze by było usunąć ten numer z pola tekstowego by uniknąć związanych z tym problemów. By edytować pole można kliknąć w rekord i wprowadzić zmiany na karcie szczegółów rekordu.
+
+### Wyślij mail
+
+Za pomocą rozszerzenia mailto, otwiera w domyślnej dla komputera przeglądarce/aplikacji mailowej, okno tworzenia maila. Automatycznie wypełnia tytuł, treść i adresata zgodnie z danymi w rekordzie oferty i bazie klientów. Plik pdf oferty trzeba ręcznie załączyć.
+
+Z uwagi na charakterystykę mailto, czasem może wyskoczyć okienko informujące o niebezpiecznym linku. Należy je zignorować.
+
+Przykładowy mail
+
+<img
+  src="/images/sd.png"
+  alt="sd.png"
+  title="sd.png"
+  style={{ width:"97%" }}
+/>
+
+### Generuj PDF oferty
+
+Zmienia status checkbox Edytuj na "TAK", jeżeli status już jest "TAK" to przycisk przyjmuje kolor biały i tekst "Oferta wygenerowana".
+
 ### Edytuj
 
-# Typy ofert i ich pola
+Checkbox który przy zakliknięciu odpala [automatyzację generującą pdf](sd).
 
-## Oferta "Serwis"
+Jego zakliknięcie, ukrywa również pola możliwe do edycji, w ich miejsce ukazuje te same pola lecz bez możliwości zmiany.
 
-### Dotyczy urządzeń
+<Frame caption="Nie wciśnięty edytuj, ciemnoszary pasek- rekord w trybie edycji">
+  <img
+    src="/images/Zrzutekranu2025-10-10120102.png"
+    alt=""
+    style={{ borderRadius:"0.5rem" }}
+    title="s"
+  />
+</Frame>
 
-Pole wyboru służące do określenia jakiego typu jest urządzenie na które jest oferta. Warunkuje widoczność pól "Treść wykonanej usługi dla aparatury med." oraz ""dla aparatury lab.".
+<Frame caption="Wciśnięty edytuj, jasnoszary pasek- rekord nie edytowalny">
+  <img
+    src="/images/Zrzutekranu2025-10-10115825.png"
+    alt=""
+    style={{ borderRadius:"0.5rem" }}
+    title="s"
+  />
+</Frame>
 
-- Medyczne- czyli urządzenie podlegające 8% vat. Udostępnia do edycji jedno pole treści usługi i kwoty.
-- Laboratoryjne- czyli urządzenie podlegające 23% vat. Udostępnia do edycji jedno pole treści usługi i kwoty.
-- Medyczne i Laboratoryjne- żadka sytuacja gdy np. urządzenie jest medyczne lecz wykonano jakąś czynność która musi być wyceniona po standardowym 23% vat. Udostępnia do edycji dwa pola treści usługi i kowty
+## Pola specyficzne dla typów ofert
 
-### Zlecenia serwisowe
+<CardGroup cols={2}>
+  <Card title="Oferta serwis" icon="screwdriver-wrench" href="/Nowa%20oferta">
+    
+  </Card>
+  <Card title="Oferta przegląd" icon="passport" href="/Nowa%20oferta">
+    
+  </Card>
+  <Card title="Oferta części" icon="boxes-stacked" href="/Nowa%20oferta">
+    
+  </Card>
+  <Card title="Oferta diagnostyka" icon="gauge-low" href="/Nowa%20oferta">
+    
+  </Card>
+</CardGroup>
 
-Tutaj wybieramy rekord z arkusza zleceń, którego to dotyczy dana oferta.
 
-W celu wglądu w szczegóły i/lub edycji wpisu, można w niego kliknąć. Otworzy się wtedy karta szczegółów rekordu.
+# Generowanie PDF
 
-<img
-  src="/images/Zrzutekranu2025-10-09102949.png"
-  alt="Zrzut ekranu 2025-10-09 102949.png"
-  style={{ width:"57%" }}
-/>
+### Wysłanie zapytania do docs automator
 
-### Link to przeglądy (from Zlecenia serwisowe)
+Automatyzacja przygotowuje dane i wysyła je przez api do docs automator. 
 
-W tym miejscu pokazywany jest rekord przeglądu przypięty do zlecenia serwisowego.
-
-To pole jest typu "lookup", czyli na żywo pokazuje aktualne dane dotyczące przypiętego przeglądu.
-
-W przypadku zleceń które nie mają przypiętego przeglądu pole może nie być widoczne.
-
-W celu wglądu w szczegóły i/lub edycji wpisu, można w niego kliknąć. Otworzy się wtedy karta szczegółów rekordu.
-
-### Treść wykonanej usługi
-
-Miejsce na wpisanie treści wykonanej usługi oraz jej wyceny.
-
-<img
-  src="/images/Zrzutekranu2025-10-09105413.png"
-  alt="Zrzut ekranu 2025-10-09 105413.png"
-  title="Zrzut ekranu 2025-10-09 105413.png"
-  style={{ width:"87%" }}
-/>
-
-### Części
-
-<img
-  src="/images/Zrzutekranu2025-10-09105935.png"
-  alt="Zrzut ekranu 2025-10-09 105935.png"
-  title="Zrzut ekranu 2025-10-09 105935.png"
-  style={{ width:"93%" }}
-/>
-
-W tym miejscu dodajemy rekordy części użytych/potrzebnych do naprawy.
-
-Pozycje stworzone w tej tabelce powstają w arkuszu "Magazyn przepływy". Ta tabelka poprostu pokazuje nam rekordy z tamtego arkusza które to połączone są z tą ofertą.
-
-W przypadku tworzenia oferty ze zlecenia, do oferty przyłączane są te same rekordy które posiadają referencje do wybranej naprawy. W innym przypadku musimy ręcznie utworzyć rekordy.
-
-**Zaciąganie danych z magazynu**
-
-Jeżeli ta część jest obecna w arkuszu "Magazyn", możemy ją wybrać w odpowiednim polu.
+Po otrzymaniu zapytania, informacje są wklejane w odpowiednim miejscu na template oferty.
 
 <img
-  src="/images/Zrzutekranu2025-10-09110534.png"
-  alt="Zrzut ekranu 2025-10-09 110534.png"
-  title="Zrzut ekranu 2025-10-09 110534.png"
-  style={{ width:"35%" }}
+  src="/images/Zrzutekranu2025-10-10121718.png"
+  alt="Zrzut ekranu 2025-10-10 121718.png"
+  title="Zrzut ekranu 2025-10-10 121718.png"
+  style={{ width:"65%" }}
 />
 
-Spowoduje to zaciągnięcie danych z magazynu do takich pól jak "Nazwa dla klienta", "Stawka Vat", "Cena sprzedaży netto". Dodatkowo w polu "Zdj (from Magazyn)", pojawią się zdjęcia podpięte do rekordu magazynu (pole typu lookup).
+## Wypełnianie rekordu zleceń serwisowych
 
-Warto pamiętać że nie licząc "Zdj", dane są do tych pól zaciągane jedynie w momencie połączenia z rekordem magazynu. Oznacza to że jakiekolwiek zmiany, a nawet usunięcie rekordu w magazynie nie wpłynie na informacje obecne w rekordzie przepływu magazynu. Tak samo (z wyjątkiem Nazwy dla klienta) wszelkie zmiany w tym rekordzie nic nie zmienią w magazynie.
+### Stan admin
 
-**Nazwa dla klienta**
+Stan admin jest ustawiany na "Oferta"
 
-Uproszczona formułka informująca o charakterze użytej części. W przypadku części pokazywanych na ofercie, ta nazwa będzie wyświetlana.
+### Numer oferty
 
-- 384 Akumulator 12V/1.3Ah MW POWER =\> Akumulator
-- 84 Przewód zasilania spirala z konektorami HILL ROM =\> Przewód zasilania spiralny
-- 298 Bateria 3V CR2032 GP =\> Bateria
+Automatyzacja czyta zawartość pola "numer oferty". Jeżeli pole nie jest puste to znajduje wszystkie zapisane tam oferty i konwertuje je na wspólny wzór O-n-M-YYYY. Skrypt wykrywa różne style zapisów które to są oddzielone przecinkiem lub spacją. Usuwane są też duplikaty. Poniżej kilka przykładów konwersji numerów ofert.
 
-**Wyświetl na ofercie**
+- O_22_3_2025 =\> O-22-3-2025
+- O112025, O12022025, O-1-1-2025 =\> O-1-1-2025, O-12-2-2025
+- O2362025 (akceptacja) O-1532-12-2025 =\> O-23-6-2025, O-1532-12-2025
 
-Domyślnie "TAK". Warunkuje czy część ma zostać wyświetlona jako osobna pozycja na ofercie czy jej wartość ma zostać doliczona do wartości usługi z tym samym vat.
+Dla ofert z 2025 i później, rekord zlecenia serwisowego jest łączony z ofertą za pomocą pola typu "link to". Jeżeli oferty nie ma w systemie jest ona dodawana. 
 
-Jeżeli nie ma usługi z tym samym vat co część to zostanie ona zawsze wypisana jako osobna pozycja na ofercie.
+<Warning>
+  Z uwagi na tą funkcję, ważne jest by usunąć numer oferty z rekordu przy usuwaniu oferty. W przeciwnym razie, zlecenie serwisowe może zostać omyłkowo podłączone do nie swojej oferty o tym samym numerze.
+</Warning>
 
-<img
-  src="/images/Zrzutekranu2025-10-09112528.png"
-  alt="Zrzut ekranu 2025-10-09 112528.png"
-  title="Zrzut ekranu 2025-10-09 112528.png"
-  style={{ width:"63%" }}
-/>
+### Realny koszt i vat
+
+Realny koszt zostaje wypełniony wartością usługi, natomiast vat jest ustawiony w zależności od wybranej opcji "[dotyczy urządzenia](sd)".
+
+## Dodawanie urządzenia w przypadku oferty naprawy
+
+Do bazy urządzeń dodawany jest rekord wypełniony danymi z oferty.
+
+## Wysyłanie danych do memento
+
+Gdy wystąpią zmiany w polach numer oferty, stan, stan admin, rekord jest oznaczany jako czekający na [synchroniację](s). W zależności od długości kolejki, rekord zostanie wysłany do memento. Czas oczekiwania powinien trwać 1-3min w przypadku pojedyńczych rekordów w kolejce.
