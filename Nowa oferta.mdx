@@ -296,7 +296,7 @@ Zmienia status checkbox Edytuj na "TAK", jeżeli status już jest "TAK" to przyc
 
 ### Edytuj
 
-Checkbox który przy zakliknięciu odpala [automatyzację generującą pdf](sd).
+Checkbox który przy zakliknięciu odpala [automatyzację generującą pdf](#generowanie-pdf).
 
 Jego zakliknięcie, ukrywa również pola możliwe do edycji, w ich miejsce ukazuje te same pola lecz bez możliwości zmiany.
 
@@ -335,12 +335,11 @@ Jego zakliknięcie, ukrywa również pola możliwe do edycji, w ich miejsce ukaz
   </Card>
 </CardGroup>
 
-
 # Generowanie PDF
 
 ### Wysłanie zapytania do docs automator
 
-Automatyzacja przygotowuje dane i wysyła je przez api do docs automator. 
+Automatyzacja przygotowuje dane i wysyła je przez api do docs automator.
 
 Po otrzymaniu zapytania, informacje są wklejane w odpowiednim miejscu na template oferty.
 
@@ -365,7 +364,7 @@ Automatyzacja czyta zawartość pola "numer oferty". Jeżeli pole nie jest puste
 - O112025, O12022025, O-1-1-2025 =\> O-1-1-2025, O-12-2-2025
 - O2362025 (akceptacja) O-1532-12-2025 =\> O-23-6-2025, O-1532-12-2025
 
-Dla ofert z 2025 i później, rekord zlecenia serwisowego jest łączony z ofertą za pomocą pola typu "link to". Jeżeli oferty nie ma w systemie jest ona dodawana. 
+Dla ofert z 2025 i później, rekord zlecenia serwisowego jest łączony z ofertą za pomocą pola typu "link to". Jeżeli oferty nie ma w systemie jest ona dodawana.
 
 <Warning>
   Z uwagi na tą funkcję, ważne jest by usunąć numer oferty z rekordu przy usuwaniu oferty. W przeciwnym razie, zlecenie serwisowe może zostać omyłkowo podłączone do nie swojej oferty o tym samym numerze.

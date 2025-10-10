@@ -12,11 +12,23 @@ title: "Oferta ze zlecenia"
 
 <AccordionGroup>
   <Accordion title="Ograniczenia interfejsu" icon="circle-exclamation">
-    Na tej stronie interfejsu, używane są przyciski aktywujące skrypty (skrypt generowania oferty). Niestety, takie przyciski mogą jedynie być na stronie typu "blank", która to ma kilka ograniczeń. Strony tego typu nie mogą być wyświetlane na aplikacji mobilnej Airtable. Nie można też zastosować przycisków pozwalajacych na dokładną customizację filtrowania/sortowania/grupowania. Z uwagi na to ograniczenie, możliwe do wyboru filtry są predefiniowane a samo okno wyboru, zawsze widoczne na interfejsie.
+    Na tej stronie interfejsu używane są przyciski aktywujące skrypty (skrypt generowania oferty). Niestety, takie przyciski mogą być umieszczone jedynie na stronie typu **"blank"**, która ma kilka ograniczeń:
+
+    - Strony typu _blank_ nie mogą być wyświetlane w aplikacji mobilnej Airtable.
+    - Nie można stosować przycisków pozwalających na precyzyjną customizację filtrowania / sortowania / grupowania.
+
+    Z uwagi na te ograniczenia:
+
+    - Możliwe do wyboru filtry są **predefiniowane**,
+    - A samo okno wyboru jest **zawsze widoczne** na interfejsie.
   </Accordion>
 </AccordionGroup>
 
-## Pole wyboru filtrów
+---
+
+## <a id="pole-wyboru-filtrow" />
+
+ Pole wyboru filtrów
 
 <Frame>
   <img
@@ -26,19 +38,29 @@ title: "Oferta ze zlecenia"
   />
 </Frame>
 
-Filtry wybrane w tym polu warunkują, jakie rekordy będą widoczne na [liście wyboru rekordów](#lista-wyboru-rekord%C3%B3w). Domyślnie ustawione filtrowanie wyszukuje rekordy zleceń serwisowych, których stan jest "PO" lub "ZAKOŃCZONE".
+Filtry wybrane w tym polu warunkują, jakie rekordy będą widoczne na [liście wyboru rekordów](#lista-wyboru-rekordow).\
+Domyślnie ustawione filtrowanie wyszukuje rekordy **zleceń serwisowych**, których stan jest\
+**"PO"** lub **"ZAKOŃCZONE"**.
 
 <AccordionGroup>
   <Accordion title="Wyszukiwanie filtrami" icon="magnifying-glass">
     Wybrane filtry dają wiele możliwości wyszukiwania rekordów. Nie wszystkie opcje wyszukiwania są oczywiste.
 
-    Używając dwóch warunków "Data", możemy zrobić sobie widełki czasowe. Wystarczy ustawić Data is after (początek widełek), oraz Data is before (koniec widełek).
+    **Przykłady:**
 
-    Znając formatowanie nazw klientów, możemy również wyszukiwać szpitale po mieście. Wystarczy wybrać Szpital/Klient contains (nazwa miasta). I tak, wpisując np. Poznań, zobaczymy rekordy z Wrzoska, Przybyszewskiego, Grunwaldzkiej itd.
+    - Używając dwóch warunków "Data", możemy zrobić sobie _widełki czasowe_:\
+      ustaw `Data is after` (początek) oraz `Data is before` (koniec).
+    - Znając formatowanie nazw klientów, możemy wyszukiwać szpitale po mieście:\
+      wybierz `Szpital/Klient contains` (nazwa miasta).\
+      Np. wpisując _Poznań_, zobaczymy rekordy z Wrzoska, Przybyszewskiego, Grunwaldzkiej itd.
   </Accordion>
 </AccordionGroup>
 
-## Lista wyboru rekordów
+---
+
+## <a id="lista-wyboru-rekordow" />
+
+ Lista wyboru rekordów
 
 <Frame>
   <img
@@ -50,38 +72,72 @@ Filtry wybrane w tym polu warunkują, jakie rekordy będą widoczne na [liście 
 
 ### Rekordy na liście
 
-Tutaj widoczne są rekordy z arkusza "Zlecenia serwisowe", odfiltrowane według [wybranych filtrów](#pole-wyboru-filtr%C3%B3w). Przez tą listę mamy "wgląd" w część rekordów zleceń serwisowych. Znaczy to że każda zmiana w widocznym tu rekordzie, edytuje go również na arkuszu i wszytkich "wglądowych" listach.
+Tutaj widoczne są rekordy z arkusza **"Zlecenia serwisowe"**, odfiltrowane według [wybranych filtrów](#pole-wyboru-filtrow).\
+Każda zmiana w tym widoku edytuje rekord **bezpośrednio w bazie** i jest widoczna we wszystkich powiązanych listach.
+
+---
 
 ### Wybieranie rekordów
 
 <Frame>
   <img
     src="/images/Oferty-ze-zlecenia-wybór.gif"
-    alt="Nagranie- Wybór zleceń"
+    alt="Nagranie - Wybór zleceń"
     style={{ borderRadius:"0.5rem" }}
   />
 </Frame>
 
-Rekordy z których chcemy wygenerować oferty, wybieramy zaznaczając po lewej stronie przycisk "Generuj...". Ten przycisk tak naprawde nie "Zaznacza" rekordu a jedynie zmienia dane w polu "Generuj ofertę" na "TAK". To pozwoli nam w następnym kroku skorzystać z automatyzacji która wyszukuje wszystkie zlecenia serwisowe które mają w tym polu "TAK" by wygenerować z nich ofertę.
+Rekordy, z których chcemy wygenerować oferty, wybieramy zaznaczając po lewej stronie przycisk **"Generuj..."**.\
+Przycisk ten nie „zaznacza” rekordu w klasycznym sensie — zamiast tego **``ustawia wartość pola Generuj ofertę na TAK``**.\
+W następnym kroku automatyzacja wyszukuje wszystkie rekordy z tym polem ustawionym na „TAK” i generuje z nich oferty.
 
-Nad listą, na lewo od filtrów widzimy również licznik oraz 3 przyciski. Licznik zlicza rekordy z danym statusem w CAŁEJ BAZIE, znaczy to że nawet gdyby rekord był odfiltrowany to nadal będzie on podliczony. Funkcja ta ma na celu ochronę przed błędami gdzie powstanie oferta z rekordu z którego nie miała powstać.
+---
 
-W przypadku gdy zaznaczone jest więcej rekordów niż powinno być, można skorzystać z przycisku "Odznacz wszystkie". Odpala on automatyzację która znajduje zaznaczone rekordy i je odznacza.
+### Licznik i przyciski nad listą
 
-## Generowanie oferty
+Nad listą, po lewej stronie filtrów, widzimy **licznik** oraz **trzy przyciski**:
 
-Po wciśnięciu przycisku "Generuj ofertę", odpalona zostanie automatyzacja która właśnie tym się zajmuje. Dla każdego wybranego rekordu powstanie jedna oferta (funkcja airtable "repeat for" jest ograniczona do 1000 akcji, dlatego można wybrać maksymalnie 1000 rekordów- aktualnie ten limit nam raczej nie grozi).
+- Licznik zlicza rekordy z danym statusem **w całej bazie** (nie tylko te aktualnie widoczne).\
+  Funkcja ta zapobiega sytuacji, w której powstałaby oferta z nieprawidłowego rekordu.
+- Jeśli zaznaczonych jest zbyt wiele rekordów, można użyć przycisku **„Odznacz wszystkie”**,\
+  który uruchamia automatyzację usuwającą zaznaczenia (ustawia `Generuj ofertę` na `NIE`).
 
-Oferta powstała ze zlecenia, będzie miała wypełnione część pól.
+---
 
-- Data wystawienia zostanie ustawiona na aktualną datę.
-- Czas realizacji zostanie ustawiony na "Do uzgodniania".
-- Jeżeli typ zlecenia to "Po przeglądzie", numer zgłoszenia klienta będzie wypełniony tekstem "Po przeglądzie".
-- Numer sprawy zostanie wypełniony numerem zlecenia.
-- Nr. Zgłoszenia Klienta, SN, INW, nazwa, model, producent, szpital, płatnik, oddział, magazyn przepływy, zostaną pobrane z rekordu.
-- Typ zostanie ustawiony na "Serwis".
+## <a id="generowanie-oferty" />
 
-By przejść do wygenerowane oferty, należy wcisnąć przycisk "Do ofert", lub wybrać Ofertowanie, Oferty w kolumnie nawigacji po lewej stronie ekranu.
+ Generowanie oferty
+
+Po wciśnięciu przycisku **„Generuj ofertę”**, uruchamia się automatyzacja tworząca oferty na podstawie zaznaczonych rekordów.\
+Dla każdego wybranego rekordu powstaje **jedna oferta**.
+
+<Note>
+  Limit: funkcja Airtable „repeat for” umożliwia maksymalnie **1000 akcji**, więc można wybrać do **1000 rekordów**.
+</Note>
+
+---
+
+### Ustawienia w wygenerowanej ofercie
+
+Oferta powstała ze zlecenia automatycznie wypełnia część pól:
+
+- **Data wystawienia** → aktualna data
+- **Czas realizacji** → „Do uzgodniania”
+- Jeśli **typ zlecenia** to „Po przeglądzie” → pole _Numer zgłoszenia klienta_ = „Po przeglądzie”
+- **Numer sprawy** = numer zlecenia
+- Pola: _Nr. Zgłoszenia Klienta_, _SN_, _INW_, _Nazwa_, _Model_, _Producent_, _Szpital_, _Płatnik_, _Oddział_, _Magazyn przepływy_ → pobierane z rekordu
+- **Typ** → „Serwis”
+
+---
+
+### Przejście do oferty
+
+Po zakończeniu generowania oferty:
+
+- kliknij przycisk **„Do ofert”**,
+- lub wybierz z menu bocznego: **Ofertowanie → Oferty**.
+
+---
 
 <CardGroup cols={1}>
   <Card title="Edycja utworzonej oferty" icon="pen-to-square" href="/Nowa%20oferta">
