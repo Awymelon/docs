@@ -75,10 +75,10 @@
             "pages": [
               "Oferta ze zlecenia",
               "Nowa oferta",
-              "Oferta przegląd",
-              "Oferta serwis",
-              "Oferta części",
-              "Oferta diagnostyka"
+              "ofertaprzeglad",
+              "ofertaserwis",
+              "ofertaczesci",
+              "ofertadiagnostyka"
             ]
           },
           {
