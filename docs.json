@@ -48,21 +48,20 @@
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Synchronizacja",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "memento do airtable",
             "pages": [
-              "api-reference/introduction"
+              "/synchronizacja/doairtable/zalozenia",
+              "/synchronizacja/doairtable/skryptjednorazowy",
+              "/synchronizacja/doairtable/skryptmasowy"
             ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "airtable do memento",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "/synchronizacja/doairtable"
             ]
           }
         ]
