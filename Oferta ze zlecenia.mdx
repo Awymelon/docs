@@ -19,16 +19,14 @@ title: "Oferta ze zlecenia"
 
     Z uwagi na te ograniczenia:
 
-    - Możliwe do wyboru filtry są **predefiniowane**,
-    - A samo okno wyboru jest **zawsze widoczne** na interfejsie.
+    - Możliwe do wyboru filtry są **predefiniowane**.
+    - Samo okno wyboru jest **zawsze widoczne** na interfejsie.
   </Accordion>
 </AccordionGroup>
 
 ---
 
-## <a id="pole-wyboru-filtrow" />
-
- Pole wyboru filtrów
+## Pole wyboru filtrów
 
 <Frame>
   <img
@@ -58,9 +56,7 @@ Domyślnie ustawione filtrowanie wyszukuje rekordy **zleceń serwisowych**, któ
 
 ---
 
-## <a id="lista-wyboru-rekordow" />
-
- Lista wyboru rekordów
+## Lista wyboru rekordów
 
 <Frame>
   <img
@@ -81,14 +77,15 @@ Każda zmiana w tym widoku edytuje rekord **bezpośrednio w bazie** i jest widoc
 
 <Frame>
   <img
-    src="/images/Oferty-ze-zlecenia-wybór.gif"
+    loop={true}
+    src="/images/Oferty-ze-zlecenia-wybr.gif"
     alt="Nagranie - Wybór zleceń"
     style={{ borderRadius:"0.5rem" }}
   />
 </Frame>
 
 Rekordy, z których chcemy wygenerować oferty, wybieramy zaznaczając po lewej stronie przycisk **"Generuj..."**.\
-Przycisk ten nie „zaznacza” rekordu w klasycznym sensie — zamiast tego **``ustawia wartość pola Generuj ofertę na TAK``**.\
+Przycisk ten nie „zaznacza” rekordu w klasycznym sensie — zamiast tego **`ustawia wartość pola Generuj ofertę na TAK`**.\
 W następnym kroku automatyzacja wyszukuje wszystkie rekordy z tym polem ustawionym na „TAK” i generuje z nich oferty.
 
 ---
@@ -104,9 +101,7 @@ Nad listą, po lewej stronie filtrów, widzimy **licznik** oraz **trzy przyciski
 
 ---
 
-## <a id="generowanie-oferty" />
-
- Generowanie oferty
+## Generowanie oferty
 
 Po wciśnięciu przycisku **„Generuj ofertę”**, uruchamia się automatyzacja tworząca oferty na podstawie zaznaczonych rekordów.\
 Dla każdego wybranego rekordu powstaje **jedna oferta**.

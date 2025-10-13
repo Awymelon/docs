@@ -30,45 +30,43 @@ title: "Nowa oferta"
 
 ---
 
-## <a id="opis-interfejsu"></a> Opis interfejsu
+## Opis interfejsu
 
-To jest interfejs typu **Record review**.  
+To jest interfejs typu **Record review**.\
 Po lewej stronie ekranu widoczna jest **lista rekordów**, a po prawej **szczegóły danego rekordu** z przyciskami akcji.
 
-Ten interfejs stanowi *wgląd* w arkusz **Oferty** – każda zmiana tutaj wprowadzona modyfikuje rekord w bazie danych.
+Ten interfejs stanowi _wgląd_ w arkusz **Oferty** – każda zmiana tutaj wprowadzona modyfikuje rekord w bazie danych.
 
----
+## Lista rekordów
 
-## <a id="lista-rekordow"></a> Lista rekordów
-
-### <a id="wlasciwosci-listy"></a> Właściwości listy
+### Właściwości listy
 
 <Frame>
   <img
     src="/images/Oferty-filtry.png"
     alt="Zrzut ekranu z interfejsu: Oferta – właściwości listy"
-    style={{ borderRadius:"0.5rem" }}
+    style={{ borderRadius:"0.5rem",width:"99%" }}
   />
 </Frame>
 
 W prawym górnym rogu widzimy przyciski:
 
-- ➕ **Plus** – do [utworzenia nowej oferty](#dodawanie-nowej-oferty)  
-- ⬜➡️ **Kwadrat ze strzałką** – otwiera stronę [Oferta ze zlecenia](/Oferta%20ze%20zlecenia)  
+- **Plus** – do [utworzenia nowej oferty](#dodawanie-nowej-oferty)
+- **Kwadrat ze strzałką** – otwiera stronę [Oferta ze zlecenia](/Oferta%20ze%20zlecenia)
 - ⋯ **Trzy kropki** – dodatkowe opcje, np. wydrukowanie rekordu
 
 Poniżej znajdują się mniejsze przyciski sterujące właściwościami listy:
 
-- **Group** – grupowanie rekordów  
-- **Filter** – filtrowanie rekordów wg dowolnych pól  
+- **Group** – grupowanie rekordów
+- **Filter** – filtrowanie rekordów wg dowolnych pól
 - **Sort** – sortowanie listy (domyślnie wg daty utworzenia)
 
-Po lewej stronie, pod napisem *Oferty*, można wybrać wzór filtrowania (np. tylko wygenerowane oferty).  
+Po lewej stronie, pod napisem _Oferty_, można wybrać wzór filtrowania (np. tylko wygenerowane oferty).\
 Na dole widoczny jest **pasek wyszukiwania** – pozwala znaleźć rekord po dowolnym polu widocznym w [podsumowaniu rekordu](#podsumowanie-rekordu).
 
 ---
 
-### <a id="podsumowanie-rekordu"></a> Podsumowanie rekordu
+### Podsumowanie rekordu
 
 <Frame>
   <img
@@ -82,18 +80,18 @@ Na dole widoczny jest **pasek wyszukiwania** – pozwala znaleźć rekord po dow
 
 Po lewej stronie znajduje się **pasek statusu**, zależny od tego, czy oferta jest w [trybie edycji](#edytuj):
 
-- **Ciemnoszary pasek** – rekord *w trybie edycji*  
-- **Jasnoszary pasek** – rekord *poza trybem edycji*
+- **Ciemnoszary pasek** – rekord _w trybie edycji_
+- **Jasnoszary pasek** – rekord _poza trybem edycji_
 
-Po prawej stronie widoczne jest pole z **plikem oferty** (PDF), który mógł zostać wygenerowany lub wklejony ręcznie.
+Po prawej od paska, widoczne jest pole z **plikem oferty** (PDF), który mógł zostać wygenerowany lub wklejony ręcznie.
 
 <AccordionGroup>
   <Accordion title="Wnioskowanie ze statusu i pliku" icon="file-chart-column">
-    Jeżeli rekord jest w trybie edycji i nie ma pliku — nie został jeszcze wygenerowany.  
-    Jeśli plik jest obecny, a rekord nie jest edytowany — oferta została wygenerowana i nie była modyfikowana.  
+    Jeżeli rekord jest w trybie edycji i nie ma pliku — nie został jeszcze wygenerowany.\
+    Jeśli plik jest obecny, a rekord nie jest edytowany — oferta została wygenerowana i nie była modyfikowana.
 
-    Rekordy w trybie edycji *z załącznikiem* mogą zawierać zmiany wprowadzone **po** wygenerowaniu pliku.  
-    W takim wypadku warto sprawdzić, czy dane w rekordzie i PDFie są spójne.  
+    Rekordy w trybie edycji _z załącznikiem_ mogą zawierać zmiany wprowadzone **po** wygenerowaniu pliku.\
+    W takim wypadku warto sprawdzić, czy dane w rekordzie i PDFie są spójne.\
     Po weryfikacji można wyłączyć tryb edycji — zostanie wtedy wygenerowany nowy plik PDF.
   </Accordion>
 </AccordionGroup>
@@ -102,13 +100,13 @@ Po prawej stronie widoczne jest pole z **plikem oferty** (PDF), który mógł zo
 
 Na prawo od załącznika widzimy:
 
-- **Numer oferty**  
-- **Typ oferty**  
+- **Numer oferty**
+- **Typ oferty**
 - **Skrót klienta**
 
 ---
 
-## <a id="dodawanie-nowej-oferty"></a> Dodawanie nowej oferty
+## Dodawanie nowej oferty
 
 <Frame>
   <img
@@ -118,11 +116,11 @@ Na prawo od załącznika widzimy:
   />
 </Frame>
 
-Po wciśnięciu przycisku ➕ otwiera się okno **tworzenia nowej oferty**, w którym wybieramy typ (określający [widoczność pól](#edycja-nowej-oferty)).
+Po wciśnięciu przycisku "+" otwiera się okno **tworzenia nowej oferty**, w którym wybieramy typ (określający [widoczność pól](#edycja-nowej-oferty)).
 
 ---
 
-## <a id="edycja-nowej-oferty"></a> Edycja nowej oferty – wspólne pola
+## Edycja nowej oferty – wspólne pola
 
 ![Zrzut ekranu 2025-10-09 105143.png](/images/Zrzutekranu2025-10-09105143.png)
 
@@ -145,43 +143,48 @@ Domyślnie **30 dni**, służy do obliczenia ważności oferty.
 
 ### Numer oferty sugerowany
 
-Pole `formula`, przechowujące awaryjny numer oferty wg wzoru  
-**O-[Lp](#lp)-[miesiąc wystawienia](#data-wystawienia)-[rok wystawienia](#data-wystawienia)**.
+Pole `formula`, przechowujące awaryjny numer oferty wg wzoru\
+[[[**O-Lp-miesiąc wystawienia-rok wystawienia**](#data-wystawienia)](#data-wystawienia)](#lp).
 
 ### Numer oferty
 
-Wyświetlany u góry, nadawany automatycznie wg wzoru:  
-**O-[Lp](#lp)-[miesiąc](#data-wystawienia)-[rok](#data-wystawienia)**  
+Wyświetlany u góry, nadawany automatycznie wg wzoru:\
+[[[**O-Lp-miesiąc-rok**](#data-wystawienia)](#data-wystawienia)](#lp)\
 Może być później ręcznie edytowany.
 
 ### Kontynuacja
 
 Umożliwia utworzenie oferty **kontynuacyjnej**, powiązanej z poprzednią.
 
-<img src="/images/Zrzutekranu2025-10-09093636.png" alt="Kontynuacja oferty" style={{ width:"46%" }}/>
+<img
+  src="/images/Zrzutekranu2025-10-09093636.png"
+  alt="Kontynuacja oferty"
+  style={{ width:"46%" }}
+/>
 
 ### Ważność oferty
 
 Data ważności = [data wystawienia](#data-wystawienia) + [dni na akceptację](#dni-na-akceptacje).
 
-### <a id="lp"></a> Lp
+### Lp
 
 Liczba porządkowa rekordu w danym roku (automatycznie zwiększana o 1).
 
 ### Nr. Sprawy
 
-Wypełniany numerem zlecenia serwisowego (dla typu *Serwis*).
+Wypełniany numerem zlecenia serwisowego (dla typu _Serwis_).
 
 ### Nr. zgłoszenia klienta
 
-Źródło oferty:  
-- *Po przeglądzie*,  
-- *Numer zgłoszenia klienta*,  
-- *Mail + data* (odpowiedź na zapytanie mailowe).
+Źródło oferty:
+
+- _Po przeglądzie_,
+- _Numer zgłoszenia klienta_,
+- _Mail + data_ (odpowiedź na zapytanie mailowe).
 
 ### Szpital
 
-Wybór klienta oferty (rekord z arkusza *Szpitale*).  
+Wybór klienta oferty (rekord z arkusza _Szpitale_).\
 Automatycznie wypełniany przy [ofercie ze zlecenia](/Oferta%20ze%20zlecenia).
 
 ### Płatnik
@@ -194,12 +197,12 @@ Wypełniany danymi z bazy (można edytować ręcznie).
 
 ### Kontakt, Email
 
-Dane z bazy (lookup z rekordu szpitala).  
+Dane z bazy (lookup z rekordu szpitala).\
 Zawsze aktualne niezależnie od daty utworzenia oferty.
 
 ### Urządzenie, Producent, Model, Nr SN, Nr INW
 
-Dane dotyczące ofertowanego urządzenia.  
+Dane dotyczące ofertowanego urządzenia.\
 Automatycznie wypełniane przy ofercie ze zlecenia.
 
 ### Czas realizacji
@@ -208,82 +211,137 @@ Domyślnie „Do uzgodnienia”.
 
 ### Wysyłka / dojazd
 
-Szczegółowy opis kosztów transportu i ich VAT.  
+Szczegółowy opis kosztów transportu i ich VAT.\
 Koszty zależą od [typu urządzeń](#pola-specyficzne).
 
-<img src="/images/Zrzutekranu2025-10-09112724.png" style={{ width:"80%" }} />
-<img src="/images/Zrzutekranu2025-10-09113916.png" style={{ width:"82%" }} />
+<img
+  src="/images/Zrzutekranu2025-10-09112724.png"
+  style={{ width:"80%" }}
+/>
+
+<img
+  src="/images/Zrzutekranu2025-10-09113916.png"
+  style={{ width:"82%" }}
+/>
 
 ### Uwagi template
 
-Wybór standardowych uwag z arkusza *Uwagi template*.
+Wybór standardowych uwag z arkusza _Uwagi template_.
 
-<img src="/images/Zrzutekranu2025-10-09114329.png" style={{ width:"60%" }} />
-<img src="/images/Zrzutekranu2025-10-09114358.png" style={{ width:"78%" }} />
+<img
+  src="/images/Zrzutekranu2025-10-09114329.png"
+  style={{ width:"60%" }}
+/>
+
+<img
+  src="/images/Zrzutekranu2025-10-09114358.png"
+  style={{ width:"78%" }}
+/>
 
 ### Wystawiona przez
 
-Wybór osoby z arkusza *Serwisanci* (z uprawnieniem Admin).
+Wybór osoby z arkusza _Serwisanci_ (z uprawnieniem Admin).
 
-<img src="/images/Zrzutekranu2025-10-09115244.png" style={{ width:"40%" }} />
+<img
+  src="/images/Zrzutekranu2025-10-09115244.png"
+  style={{ width:"40%" }}
+/>
 
 <Note>
-  Wbrew nazwie, arkusz **Serwisanci** zawiera także pracowników administracyjnych (interfejs *Kadra*).
+  Wbrew nazwie, arkusz **Serwisanci** zawiera także pracowników administracyjnych (interfejs _Kadra_).
 </Note>
 
 ### Usuń ofertę
 
-Przycisk usuwa ofertę.  
+Przycisk usuwa ofertę.\
 Przed usunięciem warto skasować numer z pola tekstowego, by uniknąć błędów.
 
 ### Wyślij mail
 
 Tworzy wiadomość w domyślnej aplikacji e-mail z tytułem i treścią pobraną z rekordu.
 
-<img src="/images/sd.png" style={{ width:"97%" }} />
+<img
+  src="/images/sd.png"
+  style={{ width:"97%" }}
+/>
 
 ### Generuj PDF oferty
 
-Zmienia status pola `Edytuj` na „TAK”.  
+Zmienia status pola `Edytuj` na „TAK”.\
 Gdy już jest „TAK”, przycisk staje się biały z napisem „Oferta wygenerowana”.
 
-### <a id="edytuj"></a> Edytuj
+Przycisk dopiero staje się widoczny gdy
 
-Checkbox uruchamiający [automatyzację PDF](#generowanie-pdf).  
-Po włączeniu ukrywa pola edytowalne, pokazując tylko ich odczytową wersję.
+- `Ważność oferty` nie jest pusty
+- `Płatnik` nie jest pusty
+- `Suma netto` nie jest "0 PLN"
+
+Jeżeli warunki są nie spełnione, to w jego miejscu widnieje przycisk "DOKOŃCZ OFERTĘ"
+
+
+### Edytuj
+
+- Status "NIE"
+  - Pole nie zakliknięte.
+  - Checkbox nie widoczny.
+  - Oznacza włączony tryb edycji (wyświetlane w rekordzie pola edytowalne).
+  - By zakliknąć, wciśnij `Generuj PDF oferty`.
+- Status "TAK"
+  - Pole zakliknięte
+  - Checkbox widoczny
+  - Oznacza wyłączony tryb edycji (wyświetlane w rekordzie pola nie edytowalne)
+  - Przy zmianie na ten status, odpala się [automatyzacja PDF](#generowanie-pdf).
+  - By o
 
 <Frame caption="Nie wciśnięty edytuj (tryb edycji)">
-  <img src="/images/Zrzutekranu2025-10-10120102.png" style={{ borderRadius:"0.5rem" }} />
+  <img
+    src="/images/Zrzutekranu2025-10-10120102.png"
+    style={{ borderRadius:"0.5rem" }}
+  />
 </Frame>
 
 <Frame caption="Wciśnięty edytuj (rekord nieedytowalny)">
-  <img src="/images/Zrzutekranu2025-10-10115825.png" style={{ borderRadius:"0.5rem" }} />
+  <img
+    src="/images/Zrzutekranu2025-10-10115825.png"
+    style={{ borderRadius:"0.5rem" }}
+  />
 </Frame>
 
 ---
 
-## <a id="pola-specyficzne"></a> Pola specyficzne dla typów ofert
+## Pola specyficzne dla typów ofert
 
 <CardGroup cols={2}>
-  <Card title="Oferta serwis" icon="screwdriver-wrench" href="/Nowa%20oferta" />
-  <Card title="Oferta przegląd" icon="passport" href="/Nowa%20oferta" />
-  <Card title="Oferta części" icon="boxes-stacked" href="/Nowa%20oferta" />
-  <Card title="Oferta diagnostyka" icon="gauge-low" href="/Nowa%20oferta" />
+  <Card title="Oferta serwis" icon="screwdriver-wrench" href="/ofertaserwis">
+    
+  </Card>
+  <Card title="Oferta przegląd" icon="passport" href="/ofertaprzeglad">
+    
+  </Card>
+  <Card title="Oferta części" icon="boxes-stacked" href="/ofertaczesci">
+    
+  </Card>
+  <Card title="Oferta diagnostyka" icon="gauge-low" href="/ofertadiagnostyka">
+    
+  </Card>
 </CardGroup>
 
 ---
 
-## <a id="generowanie-pdf"></a> Generowanie PDF
+## Generowanie PDF
 
 ### Wysłanie zapytania do Docs Automator
 
 Automatyzacja wysyła dane do **DocsAutomator** przez API, wklejając je w odpowiednie pola szablonu oferty.
 
-<img src="/images/Zrzutekranu2025-10-10121718.png" style={{ width:"65%" }} />
+<img
+  src="/images/Zrzutekranu2025-10-10121718.png"
+  style={{ width:"65%" }}
+/>
 
 ---
 
-## <a id="wypelnianie-zlecen"></a> Wypełnianie rekordu zleceń serwisowych
+## Wypełnianie rekordu zleceń serwisowych
 
 ### Stan admin
 
@@ -291,8 +349,8 @@ Ustawiany na **Oferta**.
 
 ### Numer oferty
 
-Automatyzacja konwertuje różne style numerów na jednolity wzór  
-**O-n-M-YYYY**, usuwa duplikaty i łączy zlecenia z ofertami (pole typu *link to*).
+Automatyzacja konwertuje różne style numerów na jednolity wzór\
+**O-n-M-YYYY**, usuwa duplikaty i łączy zlecenia z ofertami (pole typu _link to_).
 
 <Warning>
   Przy usuwaniu oferty usuń również jej numer z rekordu, aby uniknąć błędnych powiązań.
@@ -300,19 +358,19 @@ Automatyzacja konwertuje różne style numerów na jednolity wzór
 
 ### Realny koszt i VAT
 
-Wartości wypełniane automatycznie zgodnie z opcją *dotyczy urządzenia*.
+Wartości wypełniane automatycznie zgodnie z opcją _dotyczy urządzenia_.
 
 ---
 
-## <a id="dodawanie-urzadzenia"></a> Dodawanie urządzenia przy ofercie naprawy
+## Dodawanie urządzenia przy ofercie naprawy
 
 W przypadku oferty naprawy, do bazy urządzeń dodawany jest nowy rekord z danymi oferty.
 
 ---
 
-## <a id="wysylanie-memento"></a> Wysyłanie danych do Memento
+## Wysyłanie danych do Memento
 
-Zmiany w polach *numer oferty*, *stan*, *stan admin* oznaczają rekord jako **oczekujący na synchronizację**.  
+Zmiany w polach _numer oferty_, _stan_, _stan admin_ oznaczają rekord jako **oczekujący na synchronizację**.\
 Rekord zostanie wysłany do Memento po kilku minutach (1–3 minuty w przypadku pojedynczych rekordów).
 
 ---
