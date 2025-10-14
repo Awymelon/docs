@@ -355,14 +355,32 @@ Dokument zostanie również zapisany na dysku google w lokalizacji  **_nazwa szp
 
 Ustawiany na **Oferta**.
 
-### Numer oferty
+### Numer oferty (stary format)
 
 Automatyzacja konwertuje różne style numerów na jednolity wzór\
 **O-n-M-YYYY**, usuwa duplikaty i łączy zlecenia z ofertami (pole typu _link to_).
 
+<AccordionGroup>
+  <Accordion title="Wykrywane formaty i dodatkowe info" icon="circle-exclamation">
+    Skrypt wykrywa różne style zapisów które to są oddzielone przecinkiem lub spacją. Usuwane są też duplikaty. Poniżej kilka przykładów konwersji numerów ofert.
+
+    - O_22_3_2025 =\> O-22-3-2025
+    - O112025, O12022025, O-1-1-2025 =\> O-1-1-2025, O-12-2-2025
+    - O2362025 (akceptacja) O-1532-12-2025 =\> O-23-6-2025, O-1532-12-2025
+
+    Dla ofert z 2025 i później, rekord zlecenia serwisowego jest łączony z ofertą za pomocą pola typu "link to". Jeżeli oferty nie ma w systemie jest ona dodawana.
+  </Accordion>
+</AccordionGroup>
+
+
 <Warning>
   Przy usuwaniu oferty, usuń również formę tekstową jej numeru z rekordu. To pozwoli uniknąć błędnych powiązań wpisów.
 </Warning>
+
+### Oferta
+
+Pole tworzące referencje między rekordem zlecenia a ofertą. Wypełniane jest gdy w ofercie wypełni się pole [`Zlecenia serwisowe`](/interfejsy/oferty/serwis#zlecenia-serwisowe) (lub gdy robimy [ofertę ze zlecenia](/interfejsy/oferty/oferta-ze-zlecenia)).
+
 
 ### Realny koszt i VAT
 
