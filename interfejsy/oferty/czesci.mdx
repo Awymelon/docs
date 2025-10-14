@@ -1,0 +1,38 @@
+---
+title: 'Części'
+description: 'Oferta na sprzedaż części.'
+icon: 'boxes-stacked'
+---
+
+Oferta bardzo podobna do typu "[Serwis](/interfejsy/oferty/serwis)", z tą różnicą że pola usługi są ukryte.
+
+Typ Części również korzysta z tego samego template pdf co Serwis.  
+
+### Części
+
+<img
+  src="/images/Zrzutekranu2025-10-09105935.png"
+  alt="Zrzut ekranu 2025-10-09 105935.png"
+  title="Zrzut ekranu 2025-10-09 105935.png"
+  style={{ width:"93%" }}
+/>
+
+W tym miejscu dodajemy rekordy części na sprzedaż.
+
+Pozycje stworzone w tej tabelce powstają w arkuszu "Magazyn przepływy". Ta tabelka poprostu pokazuje nam rekordy z tamtego arkusza które to połączone są z tą ofertą.
+
+**Zaciąganie danych z magazynu**
+
+Jeżeli ta część jest obecna w arkuszu "Magazyn", możemy ją wybrać w odpowiednim polu.
+
+<img
+  src="/images/Zrzutekranu2025-10-09110534.png"
+  alt="Zrzut ekranu 2025-10-09 110534.png"
+  title="Zrzut ekranu 2025-10-09 110534.png"
+  style={{ width:"35%" }}
+/>
+
+Spowoduje to zaciągnięcie danych z magazynu do takich pól jak "Nazwa dla klienta", "Stawka Vat", "Cena sprzedaży netto". Dodatkowo w polu "Zdj (from Magazyn)", pojawią się zdjęcia podpięte do rekordu magazynu (pole typu lookup).
+
+Warto pamiętać że nie licząc "Zdj", dane są do tych pól zaciągane jedynie w momencie połączenia z rekordem magazynu. Oznacza to że jakiekolwiek zmiany, a nawet usunięcie rekordu w magazynie nie wpłynie na informacje obecne w rekordzie przepływu magazynu. Tak samo (z wyjątkiem Nazwy dla klienta) wszelkie zmiany w tym rekordzie nic nie zmienią w magazynie.
+

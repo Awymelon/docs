@@ -2,7 +2,6 @@
 title: "Nowa oferta"
 ---
 
-# Nowa oferta
 
 <Frame>
   <img
@@ -36,7 +35,7 @@ Ten interfejs stanowi _wgląd_ w arkusz **Oferty** – każda zmiana tutaj wprow
 W prawym górnym rogu widzimy przyciski:
 
 - **Plus** – do [utworzenia nowej oferty](#dodawanie-nowej-oferty)
-- **Kwadrat ze strzałką** – otwiera stronę [Oferta ze zlecenia](/Oferta%20ze%20zlecenia)
+- **Kwadrat ze strzałką** – otwiera stronę [Oferta ze zlecenia](/interfejsy/oferty/oferta-ze-zlecenia)
 - ⋯ **Trzy kropki** – dodatkowe opcje, np. wydrukowanie rekordu
 
 Poniżej znajdują się mniejsze przyciski sterujące właściwościami listy:
@@ -127,18 +126,25 @@ Domyślnie **30 dni**, służy do obliczenia ważności oferty.
 
 ### Numer oferty sugerowany
 
-Pole `formula`, przechowujące awaryjny numer oferty wg wzoru\
-[[[**O-Lp-miesiąc wystawienia-rok wystawienia**](#data-wystawienia)](#data-wystawienia)](#lp).
+Pole `formula`, przechowujące numer oferty wg wzoru\
+[**O-[Lp](#lp)-[miesiąc wystawienia-rok wystawienia](#data-wystawienia)**].\
+W razie usunięcia zawartości wygenerowanej w `Numer oferty`, sugestia nadal dostępna w polu `formula`.
+
+  <img
+    src="/images/Zrzut ekranu 2025-10-14 090501.png"
+    style={{ borderRadius:"0.5rem" }}
+  />
 
 ### Numer oferty
 
 Wyświetlany u góry, nadawany automatycznie wg wzoru:\
-[[[**O-Lp-miesiąc-rok**](#data-wystawienia)](#data-wystawienia)](#lp)\
-Może być później ręcznie edytowany.
+[**O-[Lp](#lp)-[miesiąc-rok](#data-wystawienia)**]. Może być później ręcznie edytowany.
 
 ### Kontynuacja
 
-Umożliwia utworzenie oferty **kontynuacyjnej**, powiązanej z poprzednią.
+Używane w przypadku gdy aktualnie tworzona oferta jest **ofertą kontynuacyjną**.
+W tym polu wskazuje się ofertę **poprzedzającą** do aktualnej.
+Jeżeli poprzedzającej nie ma w systemie, można ją z tego poziomu dodać.
 
 <img
   src="/images/Zrzutekranu2025-10-09093636.png"
@@ -152,7 +158,12 @@ Data ważności = [data wystawienia](#data-wystawienia) + [dni na akceptację](#
 
 ### Lp
 
-Liczba porządkowa rekordu w danym roku (automatycznie zwiększana o 1).
+Liczba porządkowa rekordu w danym roku.
+Automatyzacja nadaje nowy najwyższy numer każdej nowej ofercie.
+
+<Note>
+  Liczenie Lp zawsze odbywa się od najwższej wartości dla tego roku. Z tego powodu, ręczne nadanie wyższej wartości Lp, spowoduje pominięcie potencjalnych numerów oferty.
+</Note>
 
 ### Nr. Sprawy
 
@@ -162,22 +173,28 @@ Wypełniany numerem zlecenia serwisowego (dla typu _Serwis_).
 
 Źródło oferty:
 
-- _Po przeglądzie_,
+- "Po przeglądzie",
 - _Numer zgłoszenia klienta_,
-- _Mail + data_ (odpowiedź na zapytanie mailowe).
+- "Mail" + _data_ (odpowiedź na zapytanie mailowe).
 
 ### Szpital
 
 Wybór klienta oferty (rekord z arkusza _Szpitale_).\
-Automatycznie wypełniany przy [ofercie ze zlecenia](/Oferta%20ze%20zlecenia).
+Automatycznie wypełniany przy [ofercie ze zlecenia](/interfejsy/oferty/oferta-ze-zlecenia).
 
 ### Płatnik
 
-Jednostka płacąca. Domyślnie wypełniana automatycznie, ale można ją zmienić.
+Jednostka płacąca. Domyślnie wypełniana automatycznie (płatnikiem danego klienta), ale można ją zmienić.
 
 ### Termin płatności
 
-Wypełniany danymi z bazy (można edytować ręcznie).
+Wypełniany danymi z bazy (terminem przypisanym do płatnika), można rędznie zmienić.
+
+<Note>
+  W przypadku gdy rekord szpitala jest poprawnie uzupełniony (wskazny płatnik i termin płatności w płatniku), wypełnianie danych o kliencie wygląda w następujący sposób.
+
+  _Wybór szpitala_ > 5s > `wypełnienie płatnika` > 5s > `wypełnienie terminu`
+</Note>
 
 ### Kontakt, Email
 
@@ -195,8 +212,10 @@ Domyślnie „Do uzgodnienia”.
 
 ### Wysyłka / dojazd
 
-Szczegółowy opis kosztów transportu i ich VAT.\
-Koszty zależą od [typu urządzeń](#pola-specyficzne).
+- Dojazd- koszt dojazdu serwisanta do klienta. Dojazd jest płatny dla klientów z poza powiatu Poznańskiego.  Koszt netto jest automatycznie wyliczany, z arkusza szpitali pobierana jest odległość do klienta (kilometry drogą, liczone od warsztatu Kopczyńskiego).\
+  Wartość netto = ( odległość x 1,5 x 2 ) zł.  W dojazd powinny być również wpisane koszty hotelu jeżeli taki byłby wymagany. Vat transportu jest ustalany w zależności od [typu urządzeń](/interfejsy/oferty/serwis#dotyczy-urz%C4%85dze%C5%84).
+- Wysyłka/Wysyłka zwrotna- koszt jednej wysyłki do klienta. Automatyzacja ustawia koszt netto na 60zł i transport vat na 8%.
+- Wysyłka w dwie strony- koszt jednej wysyłki do klienta. Automatyzacja ustawia koszt netto na 80zł i transport vat na 8%.
 
 <img
   src="/images/Zrzutekranu2025-10-09112724.png"
@@ -274,7 +293,6 @@ Jeżeli warunki są nie spełnione, to w jego miejscu widnieje przycisk "DOKOŃC
   - Checkbox widoczny
   - Oznacza wyłączony tryb edycji (wyświetlane w rekordzie pola nie edytowalne)
   - Przy zmianie na ten status, odpala się [automatyzacja PDF](#generowanie-pdf).
-  - By o
 
 <Frame caption="Nie wciśnięty edytuj (tryb edycji)">
   <img
@@ -295,17 +313,21 @@ Jeżeli warunki są nie spełnione, to w jego miejscu widnieje przycisk "DOKOŃC
 ## Pola specyficzne dla typów ofert
 
 <CardGroup cols={2}>
-  <Card title="Oferta serwis" icon="screwdriver-wrench" href="/ofertaserwis">
-    
+  <Card title="Oferta serwis" icon="screwdriver-wrench" href="/interfejsy/oferty/serwis">
+   // @ts-ignore
+ 
   </Card>
-  <Card title="Oferta przegląd" icon="passport" href="/ofertaprzeglad">
-    
+  <Card title="Oferta przegląd" icon="passport" href="/interfejsy/oferty/przeglad">
+    // @ts-ignore
+
   </Card>
-  <Card title="Oferta części" icon="boxes-stacked" href="/ofertaczesci">
-    
+  <Card title="Oferta części" icon="boxes-stacked" href="/interfejsy/oferty/czesci">
+    // @ts-ignore
+
   </Card>
-  <Card title="Oferta diagnostyka" icon="gauge-low" href="/ofertadiagnostyka">
-    
+  <Card title="Oferta diagnostyka" icon="gauge-low" href="/interfejsy/oferty/diagnostyka">
+    // @ts-ignore
+
   </Card>
 </CardGroup>
 
@@ -321,6 +343,9 @@ Automatyzacja wysyła dane do **DocsAutomator** przez API, wklejając je w odpow
   src="/images/Zrzutekranu2025-10-10121718.png"
   style={{ width:"65%" }}
 />
+
+Wygenerowany plik PDF można zobaczyć i pobrać w polu "pliki" na dole strony.
+Dokument zostanie również zapisany na dysku google w lokalizacji  **_nazwa szpitala_ / oferty / _nr oferty_**
 
 ---
 
@@ -357,3 +382,4 @@ Zmiany w polach _numer oferty_, _stan_, _stan admin_ oznaczają rekord jako **oc
 Rekord zostanie wysłany do Memento po kilku minutach (1–3 minuty w przypadku pojedynczych rekordów).
 
 ---
+

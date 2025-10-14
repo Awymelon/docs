@@ -1,5 +1,7 @@
 ---
-title: "Oferta serwis"
+title: "Serwis"
+description: 'Oferta na wykonanie określonych czynności naprawczych.'
+icon: 'screwdriver-wrench'
 ---
 
 ![Zrzut ekranu 2025-10-09 105143.png](/images/Zrzutekranu2025-10-09105143.png)
@@ -29,6 +31,7 @@ Wygenerowane protokoły diagnostyki można zobaczyć na dole strony w polu typu 
 ### Dotyczy urządzeń
 
 Pole wyboru służące do określenia jakiego typu jest urządzenie na które jest oferta. Warunkuje widoczność pól "Treść wykonanej usługi dla aparatury med." oraz ""dla aparatury lab.".
+Warunkuje również automatyczny vat w [wysyłka/dojazd](/interfejsy/oferty/nowa-oferta#wysy%C5%82ka-%2F-dojazd).
 
 - Medyczne- czyli urządzenie podlegające 8% vat. Udostępnia do edycji jedno pole treści usługi i kwoty.
 - Laboratoryjne- czyli urządzenie podlegające 23% vat. Udostępnia do edycji jedno pole treści usługi i kwoty.
@@ -81,6 +84,8 @@ W tym miejscu dodajemy rekordy części użytych/potrzebnych do naprawy.
 Pozycje stworzone w tej tabelce powstają w arkuszu "Magazyn przepływy". Ta tabelka poprostu pokazuje nam rekordy z tamtego arkusza które to połączone są z tą ofertą.
 
 W przypadku tworzenia oferty ze zlecenia, do oferty przyłączane są te same rekordy które posiadają referencje do wybranej naprawy. W innym przypadku musimy ręcznie utworzyć rekordy.
+
+Jeżeli chcemy usunąć część z oferty lecz pozostawić jej rekord oraz referencje do zlecenia, po kliknięciu na wpis LPM należy wybrać "Unlink record".
 
 **Zaciąganie danych z magazynu**
 

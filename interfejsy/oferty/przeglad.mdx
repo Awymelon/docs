@@ -1,0 +1,91 @@
+---
+title: 'Przeglądy'
+description: 'Oferta na wykonanie przeglądu określonych urządzeń.'
+icon: 'passport'
+---
+
+
+## Urządzenia
+
+<img
+    src="/images/Zrzut ekranu 2025-10-13 124211.png"
+    alt="Zrzut ekranu z interfejsu: Nowa oferta"
+    style={{ borderRadius:"0.5rem" }}
+/>
+
+### Wybierz urządzenie
+Jeżeli na urządzenie była już kiedyś tworzona oferta, można je wybrać klikając na przycisk "wybierz urządzenie".
+
+### Cennik
+W tym polu możemy wybrać adekwatną pozycję z arkusza "Cennik" dla danego urządzenia. 
+
+Gdy referencja zostanie ustawiona, automatyzacja wypełni pola.
+- RCP (rzeczywista kwota przeglądu).
+- Nazwa urządzenia.
+- Szpital (zostanie uzupełniony wartością widniejącą w aktualnej ofercie)
+W pojawią się również dane wpisu cennika w polach typu lookup.
+- SCP (sugerowana kwota przeglądu).
+- VAT.
+ 
+### Informacje o urządzniu (model, producent, sn, inw)
+Wypełniane dostępnymi informacjami o urządzeniu.
+
+Domyślnie "-".
+
+<Warning>
+    Automatyzacja generująca PDF ignoruje treść pól jeżeli ta to "-". W sytuacji gdy nie ma lub nie znamy np. producenta, wpisujemy w tym polu "-".
+    W przeciwnym razie na dokumencie oferty w miejscu pustego pola pojawi się "UNDEFINED". 
+</Warning>
+
+### Lokalizacja
+Informacja o miejscu urządzenia (oddział). Dane wewnętrzne, aktualnie nie wyświetlane na ofercie.  
+
+### Podsumowania kolumn tabeli
+
+<img
+    src="/images/Zrzut ekranu 2025-10-14 095828.png"
+    alt="Zrzut ekranu z interfejsu: Nowa oferta"
+    style={{ borderRadius:"0.5rem" }}
+/>
+Na dole, pod polami tabelu są podsumowania kolumn, mogą one być przydatne przy dużej liczbie rekordów urządzeń.
+<AccordionGroup>
+  <Accordion title="Zastowosania podsumowań" icon="table-of-contents">
+
+    - Licznik Unique, może posłużyć do wykrywania duplikatów urządzeń.
+    - Również Unique zawiera informacje o ilości różnych oddziałów na których są zadania. 
+    - Sumy SPC i RCP pozwala na zauważenie zwyżki/promocji w danej ofercie.
+
+
+  </Accordion>
+</AccordionGroup>
+
+## Format dokumentu
+
+
+<img
+    src="/images/Zrzut ekranu 2025-10-14 100645.png"
+    style={{ borderRadius:"0.5rem" }}
+/>
+
+### Lp.
+
+Liczba pojedyńcza. 
+
+### Nr
+
+_Numer inwentarzowy_ + _Numer seryjny_.
+
+### Czynność
+
+"Okresowy przegląd techniczny: " + _nazwa_ + _producent_ + _model_.
+
+<Warning>
+    Jak wspomniano [wcześniej](/interfejsy/oferty/przeglad#informacje-o-urz%C4%85dzniu-model%2C-producent%2C-sn%2C-inw), nie należy pozostawiać pustych pól w urządzeniach.
+    Takie działanie może przesunąć listę co będzie widoczne w tym miejscu.
+    Takie przesunięcie będzie się objawiać tym że rekord który nie ma wartości np. model, dostanie model następnego rekordu. Przesunięcie będzie obecne dla wszstkich 
+    pozycji w tabelce o niższym Lp.
+</Warning>
+
+### Ilość
+
+Zawsze " 1 ".

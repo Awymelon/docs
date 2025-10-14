@@ -11,43 +11,58 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Interfejsy",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Ofertowanie",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "interfejsy/oferty/nowa-oferta",
+              "interfejsy/oferty/oferta-ze-zlecenia",
+              "interfejsy/oferty/serwis",
+              "interfejsy/oferty/przeglad",
+              "interfejsy/oferty/czesci",
+              "interfejsy/oferty/diagnostyka"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Przepływy",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "interfejsy/przeplywy/nowy-przeplyw",
+              "interfejsy/przeplywy/serwis",
+              "interfejsy/przeplywy/przeglad"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Karty szczegółów rekordów",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "interfejsy/karty/zlecenie-serwisowe",
+              "interfejsy/karty/przeglad",
+              "interfejsy/karty/oferta",
+              "interfejsy/karty/przeplyw",
+              "interfejsy/karty/szpital-klient"
+            ]
+          },
+                    {
+            "group": "Szpitale/klienci",
+            "pages": [
+
             ]
           },
           {
-            "group": "AI tools",
+            "group": "Przeglądy",
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+
+            ]
+          },
+          {
+            "group": "Zlecenia serwisowe",
+            "pages": [
+
             ]
           }
         ]
       },
-      {
+            {
         "tab": "Synchronizacja",
         "groups": [
           {
@@ -61,56 +76,7 @@
           {
             "group": "airtable do memento",
             "pages": [
-              "/synchronizacja/doairtable"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "Interfejsy",
-        "groups": [
-          {
-            "group": "Ofertowanie",
-            "pages": [
-              "Oferta ze zlecenia",
-              "Nowa oferta",
-              "ofertaprzeglad",
-              "ofertaserwis",
-              "ofertaczesci",
-              "ofertadiagnostyka"
-            ]
-          },
-          {
-            "group": "Przepływy",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Karty szczegółów rekordów",
-            "pages": [
-              "Karta zlecenia serwisowego",
-              "Karta przeglądu",
-              "Karta oferty",
-              "Karta przepływu",
-              "przepływu"
-            ]
-          },
-          {
-            "group": "Przeglądy",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
-          },
-          {
-            "group": "Linki do rekordów",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "/synchronizacja/domemento/zalozenia"
             ]
           }
         ]
