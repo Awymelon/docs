@@ -2,7 +2,6 @@
 title: "Nowa oferta"
 ---
 
-
 <Frame>
   <img
     src="/images/Oferty.png"
@@ -103,9 +102,11 @@ Po wciśnięciu przycisku "+" otwiera się okno **tworzenia nowej oferty**, w kt
 
 ---
 
-## Edycja nowej oferty – wspólne pola
+# Edycja nowej oferty – wspólne pola
 
 ![Zrzut ekranu 2025-10-09 105143.png](/images/Zrzutekranu2025-10-09105143.png)
+
+## Podstawowe dane oferty
 
 ### Typ
 
@@ -127,24 +128,22 @@ Domyślnie **30 dni**, służy do obliczenia ważności oferty.
 ### Numer oferty sugerowany
 
 Pole `formula`, przechowujące numer oferty wg wzoru\
-[**O-[Lp](#lp)-[miesiąc wystawienia-rok wystawienia](#data-wystawienia)**].\
+[[[**O-Lp-miesiąc wystawienia-rok wystawienia**](#data-wystawienia)](#lp)].\
 W razie usunięcia zawartości wygenerowanej w `Numer oferty`, sugestia nadal dostępna w polu `formula`.
 
-  <img
-    src="/images/Zrzut ekranu 2025-10-14 090501.png"
-    style={{ borderRadius:"0.5rem" }}
-  />
+<img
+  src="/images/Zrzut ekranu 2025-10-14 090501.png"
+  style={{ borderRadius:"0.5rem" }}
+/>
 
 ### Numer oferty
 
 Wyświetlany u góry, nadawany automatycznie wg wzoru:\
-[**O-[Lp](#lp)-[miesiąc-rok](#data-wystawienia)**]. Może być później ręcznie edytowany.
+[[[**O-Lp-miesiąc-rok**](#data-wystawienia)](#lp)]. Może być później ręcznie edytowany.
 
 ### Kontynuacja
 
-Używane w przypadku gdy aktualnie tworzona oferta jest **ofertą kontynuacyjną**.
-W tym polu wskazuje się ofertę **poprzedzającą** do aktualnej.
-Jeżeli poprzedzającej nie ma w systemie, można ją z tego poziomu dodać.
+Używane w przypadku gdy aktualnie tworzona oferta jest **ofertą kontynuacyjną**. W tym polu wskazuje się ofertę **poprzedzającą** do aktualnej. Jeżeli poprzedzającej nie ma w systemie, można ją z tego poziomu dodać.
 
 <img
   src="/images/Zrzutekranu2025-10-09093636.png"
@@ -158,8 +157,7 @@ Data ważności = [data wystawienia](#data-wystawienia) + [dni na akceptację](#
 
 ### Lp
 
-Liczba porządkowa rekordu w danym roku.
-Automatyzacja nadaje nowy najwyższy numer każdej nowej ofercie.
+Liczba porządkowa rekordu w danym roku. Automatyzacja nadaje nowy najwyższy numer każdej nowej ofercie.
 
 <Note>
   Liczenie Lp zawsze odbywa się od najwższej wartości dla tego roku. Z tego powodu, ręczne nadanie wyższej wartości Lp, spowoduje pominięcie potencjalnych numerów oferty.
@@ -177,6 +175,8 @@ Wypełniany numerem zlecenia serwisowego (dla typu _Serwis_).
 - _Numer zgłoszenia klienta_,
 - "Mail" + _data_ (odpowiedź na zapytanie mailowe).
 
+## Klient
+
 ### Szpital
 
 Wybór klienta oferty (rekord z arkusza _Szpitale_).\
@@ -193,7 +193,7 @@ Wypełniany danymi z bazy (terminem przypisanym do płatnika), można rędznie z
 <Note>
   W przypadku gdy rekord szpitala jest poprawnie uzupełniony (wskazny płatnik i termin płatności w płatniku), wypełnianie danych o kliencie wygląda w następujący sposób.
 
-  _Wybór szpitala_ > 5s > `wypełnienie płatnika` > 5s > `wypełnienie terminu`
+  _Wybór szpitala_ \> 5s \> `wypełnienie płatnika` \> 5s \> `wypełnienie terminu`
 </Note>
 
 ### Kontakt, Email
@@ -201,10 +201,26 @@ Wypełniany danymi z bazy (terminem przypisanym do płatnika), można rędznie z
 Dane z bazy (lookup z rekordu szpitala).\
 Zawsze aktualne niezależnie od daty utworzenia oferty.
 
+## Informacje dt. urządzenia
+
 ### Urządzenie, Producent, Model, Nr SN, Nr INW
 
-Dane dotyczące ofertowanego urządzenia.\
-Automatycznie wypełniane przy ofercie ze zlecenia.
+Automatycznie wypełniane przy [ofercie ze zlecenia.](/interfejsy/oferty/oferta-ze-zlecenia)
+
+Na formularzu ofety wyświetla się jedynie jeden z numerów (SN/INW).
+
+W przypadku oferty typu przegląd, pola `Urządzenie` oraz `Nr INW`, wypełniane tekstem "Na liście".
+
+<img
+  src="/images/obraz.png"
+  alt="obraz.png"
+  title="obraz.png"
+  style={{ width:"39%" }}
+/>
+
+---
+
+## Informacje dt. wykonania usługi
 
 ### Czas realizacji
 
@@ -226,6 +242,8 @@ Domyślnie „Do uzgodnienia”.
   src="/images/Zrzutekranu2025-10-09113916.png"
   style={{ width:"82%" }}
 />
+
+## Stopka oferty
 
 ### Uwagi template
 
@@ -253,6 +271,8 @@ Wybór osoby z arkusza _Serwisanci_ (z uprawnieniem Admin).
 <Note>
   Wbrew nazwie, arkusz **Serwisanci** zawiera także pracowników administracyjnych (interfejs _Kadra_).
 </Note>
+
+## Przyciski akcji oferty
 
 ### Usuń ofertę
 
@@ -314,20 +334,16 @@ Jeżeli warunki są nie spełnione, to w jego miejscu widnieje przycisk "DOKOŃC
 
 <CardGroup cols={2}>
   <Card title="Oferta serwis" icon="screwdriver-wrench" href="/interfejsy/oferty/serwis">
-   // @ts-ignore
- 
+    
   </Card>
   <Card title="Oferta przegląd" icon="passport" href="/interfejsy/oferty/przeglad">
-    // @ts-ignore
-
+    
   </Card>
   <Card title="Oferta części" icon="boxes-stacked" href="/interfejsy/oferty/czesci">
-    // @ts-ignore
-
+    
   </Card>
   <Card title="Oferta diagnostyka" icon="gauge-low" href="/interfejsy/oferty/diagnostyka">
-    // @ts-ignore
-
+    
   </Card>
 </CardGroup>
 
@@ -344,10 +360,7 @@ Automatyzacja wysyła dane do **DocsAutomator** przez API, wklejając je w odpow
   style={{ width:"65%" }}
 />
 
-Wygenerowany plik PDF można zobaczyć i pobrać w polu "pliki" na dole strony.
-Dokument zostanie również zapisany na dysku google w lokalizacji  **_nazwa szpitala_ / oferty / _nr oferty_**
-
----
+Wygenerowany plik PDF można zobaczyć i pobrać w polu "pliki" na dole strony. Dokument zostanie również zapisany na dysku google w lokalizacji  **__nazwa szpitala / oferty / nr oferty__**
 
 ## Wypełnianie rekordu zleceń serwisowych
 
@@ -361,7 +374,7 @@ Automatyzacja konwertuje różne style numerów na jednolity wzór\
 **O-n-M-YYYY**, usuwa duplikaty i łączy zlecenia z ofertami (pole typu _link to_).
 
 <AccordionGroup>
-  <Accordion title="Wykrywane formaty i dodatkowe info" icon="circle-exclamation">
+  <Accordion title="Wykrywane formaty i dodatkowe info" icon="keyboard">
     Skrypt wykrywa różne style zapisów które to są oddzielone przecinkiem lub spacją. Usuwane są też duplikaty. Poniżej kilka przykładów konwersji numerów ofert.
 
     - O_22_3_2025 =\> O-22-3-2025
@@ -372,7 +385,6 @@ Automatyzacja konwertuje różne style numerów na jednolity wzór\
   </Accordion>
 </AccordionGroup>
 
-
 <Warning>
   Przy usuwaniu oferty, usuń również formę tekstową jej numeru z rekordu. To pozwoli uniknąć błędnych powiązań wpisów.
 </Warning>
@@ -380,7 +392,6 @@ Automatyzacja konwertuje różne style numerów na jednolity wzór\
 ### Oferta
 
 Pole tworzące referencje między rekordem zlecenia a ofertą. Wypełniane jest gdy w ofercie wypełni się pole [`Zlecenia serwisowe`](/interfejsy/oferty/serwis#zlecenia-serwisowe) (lub gdy robimy [ofertę ze zlecenia](/interfejsy/oferty/oferta-ze-zlecenia)).
-
 
 ### Realny koszt i VAT
 
@@ -400,4 +411,3 @@ Zmiany w polach _numer oferty_, _stan_, _stan admin_ oznaczają rekord jako **oc
 Rekord zostanie wysłany do Memento po kilku minutach (1–3 minuty w przypadku pojedynczych rekordów).
 
 ---
-
