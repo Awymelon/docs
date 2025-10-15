@@ -1,14 +1,16 @@
 ---
 title: "Serwis"
-description: 'Oferta na wykonanie określonych czynności naprawczych.'
-icon: 'screwdriver-wrench'
+description: "Oferta na wykonanie określonych czynności naprawczych."
+icon: "screwdriver-wrench"
 ---
 
 ![Zrzut ekranu 2025-10-09 105143.png](/images/Zrzutekranu2025-10-09105143.png)
 
-## Pola widoczne dla typu serwis
+# Pola widoczne dla typu serwis
 
 Oprócz wspólnych pól, omówionych w sekcji "[Nowa Oferta](https://tiemed.mintlify.app/Nowa%20oferta#edycja-nowej-oferty-wsp%C3%B3lne-pola)", każdy typ oferty ma widoczne specyficzne dla siebie pola.
+
+## Górne przyciski akcji
 
 ### Przycisk "Generuj prot. przegl."
 
@@ -28,14 +30,23 @@ Uruchamia automatyzację która to znajduje rekordy zleceń serwisowych podłąc
 
 Wygenerowane protokoły diagnostyki można zobaczyć na dole strony w polu typu lookup.
 
+## Informacje dt. urządzenia
+
+### Urządzenie, Producent, Model, Nr SN, Nr INW
+
+Automatycznie wypełniane przy [ofercie ze zlecenia.](/interfejsy/oferty/oferta-ze-zlecenia)
+
+Na formularzu ofety wyświetla się jedynie jeden z numerów (SN/INW).
+
 ### Dotyczy urządzeń
 
-Pole wyboru służące do określenia jakiego typu jest urządzenie na które jest oferta. Warunkuje widoczność pól "Treść wykonanej usługi dla aparatury med." oraz ""dla aparatury lab.".
-Warunkuje również automatyczny vat w [wysyłka/dojazd](/interfejsy/oferty/nowa-oferta#wysy%C5%82ka-%2F-dojazd).
+Pole wyboru służące do określenia jakiego typu jest ofertowane urządzenie. Warunkuje widoczność pól `Treść wykonanej usługi dla aparatury med.` oraz `dla aparatury lab` ((treść wykonanej usługi)[#tre%C5%9B%C4%87-wykonanej-us%C5%82ugi]). Warunkuje również automatyczny vat w [wysyłka/dojazd](/interfejsy/oferty/nowa-oferta#wysy%C5%82ka-%2F-dojazd).
 
 - Medyczne- czyli urządzenie podlegające 8% vat. Udostępnia do edycji jedno pole treści usługi i kwoty.
 - Laboratoryjne- czyli urządzenie podlegające 23% vat. Udostępnia do edycji jedno pole treści usługi i kwoty.
 - Medyczne i Laboratoryjne- żadka sytuacja gdy np. urządzenie jest medyczne lecz wykonano jakąś czynność która musi być wyceniona po standardowym 23% vat. Udostępnia do edycji dwa pola treści usługi i kowty
+
+## Relacja do zleceń serwisowych
 
 ### Zlecenia serwisowe
 
@@ -58,6 +69,8 @@ To pole jest typu "lookup", czyli na żywo pokazuje aktualne dane dotyczące prz
 W przypadku zleceń które nie mają przypiętego przeglądu pole może nie być widoczne.
 
 W celu wglądu w szczegóły i/lub edycji wpisu, można w niego kliknąć. Otworzy się wtedy karta szczegółów rekordu.
+
+## Wykonana usługa i części
 
 ### Treść wykonanej usługi
 
@@ -122,3 +135,20 @@ Jeżeli nie ma usługi z tym samym vat co część to zostanie ona zawsze wypisa
   title="Zrzut ekranu 2025-10-09 112528.png"
   style={{ width:"63%" }}
 />
+
+---
+
+<CardGroup cols={2}>
+  <Card title="Nowa oferta" icon="pen-to-square" href="/interfejsy/oferty/nowa-oferta">
+    
+  </Card>
+  <Card title="Oferta przegląd" icon="passport" href="/interfejsy/oferty/przeglad">
+    
+  </Card>
+  <Card title="Oferta części" icon="boxes-stacked" href="/interfejsy/oferty/czesci">
+    
+  </Card>
+  <Card title="Oferta diagnostyka" icon="gauge-low" href="/interfejsy/oferty/diagnostyka">
+    
+  </Card>
+</CardGroup>

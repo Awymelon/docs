@@ -1,12 +1,14 @@
 ---
-title: 'Części'
-description: 'Oferta na sprzedaż części.'
-icon: 'boxes-stacked'
+title: "Części"
+description: "Oferta na sprzedaż części."
+icon: "boxes-stacked"
 ---
+
+Oprócz wspólnych pól, omówionych w sekcji "[Nowa Oferta](https://tiemed.mintlify.app/Nowa%20oferta#edycja-nowej-oferty-wsp%C3%B3lne-pola)", każdy typ oferty ma widoczne specyficzne dla siebie pola.
 
 Oferta bardzo podobna do typu "[Serwis](/interfejsy/oferty/serwis)", z tą różnicą że pola usługi są ukryte.
 
-Typ Części również korzysta z tego samego template pdf co Serwis.  
+Typ Części również korzysta z tego samego template pdf co Serwis.
 
 ### Części
 
@@ -16,6 +18,7 @@ Typ Części również korzysta z tego samego template pdf co Serwis.
   title="Zrzut ekranu 2025-10-09 105935.png"
   style={{ width:"93%" }}
 />
+
 W tym miejscu dodajemy rekordy części na sprzedaż.
 
 Pozycje stworzone w tej tabelce powstają w arkuszu "Magazyn przepływy". Ta tabelka poprostu pokazuje nam rekordy z tamtego arkusza które to połączone są z tą ofertą.
@@ -35,3 +38,19 @@ Spowoduje to zaciągnięcie danych z magazynu do takich pól jak "Nazwa dla klie
 
 Warto pamiętać że nie licząc "Zdj", dane są do tych pól zaciągane jedynie w momencie połączenia z rekordem magazynu. Oznacza to że jakiekolwiek zmiany, a nawet usunięcie rekordu w magazynie nie wpłynie na informacje obecne w rekordzie przepływu magazynu. Tak samo (z wyjątkiem Nazwy dla klienta) wszelkie zmiany w tym rekordzie nic nie zmienią w magazynie.
 
+---
+
+<CardGroup cols={2}>
+  <Card title="Oferta serwis" icon="screwdriver-wrench" href="/interfejsy/oferty/serwis">
+    
+  </Card>
+  <Card title="Oferta przegląd" icon="passport" href="/interfejsy/oferty/przeglad">
+    
+  </Card>
+  <Card title="Nowa oferta" icon="pen-to-square" href="/interfejsy/oferty/nowa-oferta">
+    
+  </Card>
+  <Card title="Oferta diagnostyka" icon="gauge-low" href="/interfejsy/oferty/diagnostyka">
+    
+  </Card>
+</CardGroup>
