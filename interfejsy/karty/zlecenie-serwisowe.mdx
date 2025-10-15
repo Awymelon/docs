@@ -1,7 +1,7 @@
 ---
 title: "Zlecenie serwisowe"
-description: 'Karta szczegółów rekordu zlecenia serwisowego.'
-icon: 'screwdriver-wrench'
+description: "Karta szczegółów rekordu zlecenia serwisowego."
+icon: "screwdriver-wrench"
 ---
 
 <img
@@ -9,42 +9,71 @@ icon: 'screwdriver-wrench'
   style={{ width:"60%" }}
 />
 
+## Nagłówek
+
 ### Numer zlecenia
 
-Nadawany przez memento database. **Nie** jest unikalny, może się powtórzyć jeżeli powstały 2 rekordy w podobnym czasie na różnych urządzeniach. 
-Jest nadawany ten sam dla rekordu będącego kontynuacji poprzedniego zlecenia serwisowego (np gdy tuż po zakończeniu naprawy zepsuje się coś nowego).
+Nadawany przez memento database. **Nie** jest unikalny, może się powtórzyć jeżeli powstały 2 rekordy w podobnym czasie na różnych urządzeniach. Jest nadawany ten sam dla rekordu będącego kontynuacji poprzedniego zlecenia serwisowego (np gdy tuż po zakończeniu naprawy zepsuje się coś nowego).
 
-### Generuj PN
+## Przyciski akcji
+
+### Pomoc
+
+Otwiera w nowej karcie tą stronę :)
+
+### Generuj orz. kas. (3 kropki)
+
+Generuj orzeczenie kasacji. Automatyzacja wysyła do api docsautomator zapytanie o wygenerowanie dokumentu pdf który jest wstawiany w pole `protokół naprawy`.
+
+<img
+  src="/images/obraz.png"
+  alt="obraz.png"
+  title="obraz.png"
+  style={{ width:"38%" }}
+/>
+
+### Generuj PN (3 kropki)
 
 Przycisk służący do bezpośredniego generowania [Protokołu Naprawy](sd) z pominięciem interfejsu [Protokół Naprawy](sd).
 
+<img
+  src="/images/Zrzutekranu2025-10-15181958.png"
+  alt="Zrzut ekranu 2025-10-15 181958.png"
+  title="Zrzut ekranu 2025-10-15 181958.png"
+  style={{ width:"43%" }}
+/>
+
+## Informacje dt. rekordu
 
 ### Typ zlecenia
+
 - DUBEL - zlecenie nieważne
-- GWARANCJA  
+- GWARANCJA
 - REKLAMACJA
 - KONTYNUACJA ([jw.](#numer-zlecenia))
 - PO PRZEGLĄDIE - naprawa niesprawnego urządzenia po wykonaniu przeglądu. W takiej sytuacij rekord powinien mieć [referencję do przeglądu](sd).
 - ZLECENIE
 
 ### Numer zlecenia klienta
-Numer zlecenia nadany sprawie przez klienta lub numer umowy pod którą podchodzi rekord.
-Link do arkusza "Zlecenia klienta".
+
+Numer zlecenia nadany sprawie przez klienta lub numer umowy pod którą podchodzi rekord. Link do arkusza "Zlecenia klienta".
 
 ### Data
-Data założenia rekordu. 
-Zwykle inna niż [Data naprawy]().
+
+Data założenia rekordu. Zwykle inna niż [Data naprawy]().
 
 ### Stan
+
 Pole zmieniane jedynie przez serwisantów.
+
 - DD - Do diagnostyki
-- OD - 
-- PD - 
+- OD -
+- PD -
 - WZ -
-- PO - 
+- PO -
 - DN - Do Naprawy (zakończono diagnostykę)
 - N - Naprawiony
-- O - Oferta (wysłano email dt. rekordu do działu administracji, zamówienia@tiemed.pl)
+- O - Oferta (wysłano email dt. rekordu do działu administracji, zamó[wienia@tiemed.pl](mailto:wienia@tiemed.pl))
 - DO WYSYŁKI - urządzenie naprawione w warsztacie czeka na wysyłke zwrotną
 - ONC - Oczekuje Na Części
 - ZAKOŃCZONE - urządzenie naprawione
@@ -52,19 +81,22 @@ Pole zmieniane jedynie przez serwisantów.
 - .KASACJA - urządzenie oddane do kasacji
 
 ### Stan Admin
+
 Pole zmieniane jedynie przez serwisantów
+
 - ""  /  N/A - puste, oznacza że rekord jeszcze nie trafił do działu administracyjnego
 - OFERTA - wysłano oferte do klienta, czeka na odpowiedź.
-- OCZEKUJĄCY - 
+- OCZEKUJĄCY -
 - ANULOWANY - zlecenie anulowane
-- ZF - ZaFakturowano, wystawiono na rekord fakturę, defacto rekord historyczny. 
+- ZF - ZaFakturowano, wystawiono na rekord fakturę, defacto rekord historyczny.
 
 <Note>
-  Przy zmianie stanu admin rekordu na "ZF", wszystkie połączone części ([link to magazyn przepływy](sd)), które mają referencję do [magazynu](sd), zostają zdjęte ze stanu.
-  Zmiany w magazynie w polu `ilość` wysyłane są do memento. 
+  Przy zmianie stanu admin rekordu na "ZF", wszystkie połączone części ([link to magazyn przepływy](sd)), które mają referencję do [magazynu](sd), zostają zdjęte ze stanu. Zmiany w magazynie w polu `ilość` wysyłane są do memento.
 </Note>
 
-### Płatnik 
+## Klient
+
+### Płatnik
 
 Referencja do arkusza [szpitali](). Zwykle płatnikiem jest płatnik wybranego klienta, jednak czasem (jak np. w przypadku naprawy gwarancyjnej) płatnik może być inny.\
 Klikając w płatnika można otworzyć jego [kartę szczegółów](/interfejsy/karty/szpital-klient).
@@ -75,25 +107,33 @@ Pole typu lookup ukazujące płatnika przypsanego do wybranego szpitala. Swego r
 
 ### Szpital/Klient
 
-Referencja do arkusza [szpitali]().
-Klikając w nazwę klienta można otworzyć jego [kartę szczegółów](/interfejsy/karty/szpital-klient).
+Referencja do arkusza [szpitali](). Klikając w nazwę klienta można otworzyć jego [kartę szczegółów](/interfejsy/karty/szpital-klient).
+
+### Oddział
+
+Oddział na którym znajduje się (powinno się znajdować) urządzenie.
+
+## Informacje identyfikacyjne urządzenia
 
 ### Urządzenie, Producent, Numer Seryjny, Numer inwentarzowy, Model
 
-Informacje o urządzeniu.
-Numer inwentarzowy to numer czasami przypisany urządzeniu przez klienta.
+Informacje o urządzeniu. Numer inwentarzowy to numer czasami przypisany urządzeniu przez klienta.
+
+## Oferty i faktury
 
 ### Numer oferty (stary format)
 
-Pole tekstowe zawierające [numer oferty](/interfejsy/oferty/nowa-oferta#numer-oferty).
-Widoczne w bazie memento database.
-Mimo że jest zwykłym polem tekstowym, jego zawartość jest [parsowana i konwertowana](/interfejsy/oferty/nowa-oferta#numer-oferty-stary-format) na referencje w polu [oferta](#Oferta).
-Pole automatycznie wypełniane przy generowaniu oferty. 
+Pole tekstowe zawierające [numer oferty](/interfejsy/oferty/nowa-oferta#numer-oferty). Widoczne w bazie memento database. Mimo że jest zwykłym polem tekstowym, jego zawartość jest [parsowana i konwertowana](/interfejsy/oferty/nowa-oferta#numer-oferty-stary-format) na referencje w polu [oferta](#Oferta). Pole automatycznie wypełniane przy generowaniu oferty.
 
 ### Oferta
 
-Referencja do rekordu oferty. 
-Można kliknąć w numer by otworzyć [kartę szczegółów](/interfejsy/karty/oferta).
+Referencja do rekordu oferty. Można kliknąć w numer by otworzyć [kartę szczegółów](/interfejsy/karty/oferta).
+
+### Przepływy
+
+Referencja do rekordu przepływu. Jeżeli obecna, rekord powinien mieć (`stan admin`)[#stan-admin] ZF.
+
+## Informacje o naprawie
 
 ### Usterka
 
@@ -111,17 +151,20 @@ Uwagi.
 
 Referencja do arkusza [serwisanci](sd). Informacja o tym kto naprawiał urządzenie.
 
-### Data zakończenia naprawy 
+### Data zakończenia naprawy
 
 Data zakończenia naprawy.
 
 ### Obrazy
 
-Zebrane zdjęcia z pól zdjęcie1 do 4. 
+Zebrane zdjęcia z pól zdjęcie1 do 4.
 
-## Przeglądy referencja
+## Przeglądy- referencja
+
+### Link to przeglądy
 
 Referencja do przeglądu poprzedzającego naprawę w przypadku naprawy "PO PRZEGLĄDZIE" oraz do przeglądu po naprawie.
+
 <img
   src="/images/Zrzut ekranu 2025-10-14 120557.png"
   style={{ width:"60%" }}
@@ -129,61 +172,121 @@ Referencja do przeglądu poprzedzającego naprawę w przypadku naprawy "PO PRZEG
 
 ### Przeglądy pole tekstowe
 
-Zawiera oddzielone przecinkiem, 27 znakowe ID rekordów przeglądu z memento.
-Ten ciąg znaków jest używany przez automatyzację do łączenia ze sobą rekordów.
+Zawiera oddzielone przecinkiem, 27 znakowe ID rekordów przeglądu z memento. Ten ciąg znaków jest używany przez automatyzację do łączenia ze sobą rekordów.
 
 ### Daj przeglądy
 
 Checkbox który ręcznie aktywuje automatyzacje tworzenia referencji między rekordami.
 
-
 ### Link to przeglądy
 
-Pole referencyjne do rekordów [przeglądów](sd).
-Klikając w rekord można wyświetlić [kartę szczegółów](/interfejsy/karty/przeglad).
+Pole referencyjne do rekordów [przeglądów](sd). Klikając w rekord można wyświetlić [kartę szczegółów](/interfejsy/karty/przeglad).
 
 <AccordionGroup>
-  <Accordion title="Brakująca referencja do przeglądu" icon="magnifying-glass">
-    Ze względu że automatyzacja nasłuchuje zmiany w polu "Daj przeglądy" oraz "Przeglądy", gdy np. rekord zostanie utworzony już z referencją, automatyzacja może się nie odpalić.
-    W takim przypadku pole tekstowe będzie wypełnione lecz Link to przeglądy będzie puste.
-    By dodać brakującą referencję należy kliknąć `Daj przeglądy`. To uruchomi autmatyzację która połączy rekordy.
-   
-    Czasem jedynie jeden z kliku rekordów może być połączony. 
-    W takiej sytuacji będziemy widzieli kilka ciągów 27 symboli oddzielonych przecinkiem.
-    Kliknięcie `Daj przeglądy` również naprawi ten problem.
+  <Accordion title="Brakująca referencja do przeglądu" icon="clipboard-question">
+    Ze względu że automatyzacja nasłuchuje zmiany w polu "Daj przeglądy" oraz "Przeglądy", gdy np. rekord zostanie utworzony już z referencją, automatyzacja może się nie odpalić. W takim przypadku pole tekstowe będzie wypełnione lecz Link to przeglądy będzie puste. By dodać brakującą referencję należy kliknąć `Daj przeglądy`. To uruchomi autmatyzację która połączy rekordy.
 
-    Alternatywą do wciśnięcia przycisku jest również wycięcie tekstu w polu przeglądy, poczekanie kilka sekund aż zmiana się zapisze, i ponowne wklejenie go w pole.
-    Ta zmiana odpali autoamtyzację.
+    Czasem jedynie jeden z kliku rekordów może być połączony. W takiej sytuacji będziemy widzieli kilka ciągów 27 symboli oddzielonych przecinkiem. Kliknięcie `Daj przeglądy` również naprawi ten problem.
+
+    Alternatywą do wciśnięcia przycisku jest również wycięcie tekstu w polu przeglądy, poczekanie kilka sekund aż zmiana się zapisze, i ponowne wklejenie go w pole. Ta zmiana odpali autoamtyzację.
   </Accordion>
 </AccordionGroup>
 
+## Części- referencja
 
 ### Części pole tekstowe
 
-Zawiera oddzielone przecinkiem, 27 znakowe ID rekordów przeglądu z memento.
-Ten ciąg znaków jest używany przez automatyzację do łączenia ze sobą rekordów.
+Zawiera oddzielone przecinkiem, 27 znakowe ID rekordów przeglądu z memento. Ten ciąg znaków jest używany przez automatyzację do łączenia ze sobą rekordów.
 
 ### Daj części
 
 Checkbox który ręcznie aktywuje automatyzacje tworzenia referencji między rekordami.
 
+### Link to części
 
-### Link to przeglądy
-
-Pole referencyjne do rekordów [magazyn przepływy](sd).
-Klikając w rekord można wyświetlić [kartę szczegółów](/interfejsy/karty/magazyn-przeplywy).
+Pole referencyjne do rekordów [magazyn przepływy](sd). Klikając w rekord można wyświetlić [kartę szczegółów](/interfejsy/karty/magazyn-przeplywy).
 
 ### Dodawanie brakujących rekordów
-Działa tak jak w przypadku [przeglądów](/interfejsy/karty/zlecenie-serwisowe#link-to-przegl%C4%85dy), 
-z tą różnicą że automatyzacja za każdym razem usuwa rekordy w magazyn przepływy, by następnie zastąpić je nowymi rekordami.
+
+Działa tak jak w przypadku [przeglądów](/interfejsy/karty/zlecenie-serwisowe#link-to-przegl%C4%85dy), z tą różnicą że automatyzacja za każdym razem usuwa rekordy w magazyn przepływy, by następnie zastąpić je nowymi rekordami.
 
 <img
   src="/images/Zrzut ekranu 2025-10-14 122816.png"
   style={{ width:"60%" }}
 />
 
-
 <Note>
   Ze względu na działanie pola referencji w memento, każda część będzie osobnym id w polu tekstowym. Automatyzacja wykrywa duplikaty i nadaje stosowną ilość w powstałych rekordach.
 </Note>
 
+## Osoba odbierająca
+
+### Imię i nazwisko
+
+Osoba która odebrała urządzenie. Referencja do arkusza Kontakty.
+
+### Podpis
+
+Link do podpisu osoby odbierającej urządzenie. 
+
+Jeżeli zamiast linku jest lokalizacja lokalnego pliku (np. file:///data/user/0/com.luckydroid.droidbase/files/...), to znaczy że **plik nie wysłał się do chmury**. Często tak się dzieje jeżeli dodanie pliku do rekordu było ostatnią edycją rekordu. Zwykle razem z automtyzacją o 6 rano link do chmury zostanie wysłany do airtable. 
+
+By ręcznie wymusić zmianę, należy otworzyć rekord w memento i wprowadzić dowolną zmianę w rekordzie. To spowoduje wysłanie rekordu do airtable.
+
+### Podpis plik
+
+Plik podpisu pobranego z podpis. Można ręcznie wgrać podpis za pomocą pliku lub linku.
+
+<Note>
+  Link musi zaczynać się na https a nie na http (zwykle wystarczy dodać literkę "s" w linku by wszystko działało).
+</Note>
+
+## Referencja zadania i czas
+
+### Szacowany czas naprawy
+
+Pole wypełniane przez serwisanta jeszcze przed naprawą. Wartość używana do [ofertowania](/interfejsy/oferty/oferta-ze-zlecenia#ustawienia-w-wygenerowanej-ofercie), używana do obliczenia [szacowanego kosztu naprawy](sd).
+
+### Łączny czas naprawy
+
+`Szacowany czas naprawy` + `Czas przed naprawą (z zadań)`
+
+### Czas z zadań
+
+Łączny czas z wszystkich zadań przypisanych do rekordu.
+
+### Daj zadania
+
+Działanie identyczne jak w przypadku [`Daj przeglądy`](/interfejsy/karty/zlecenie-serwisowe#link-to-przegl%C4%85dy).
+
+### Zadania
+
+Pole tekstowe z memento ID rekordów zadań. Adekwatnie jak [przeglądy i części](/interfejsy/karty/zlecenie-serwisowe#link-to-przegl%C4%85dy).
+
+### Link to zadania
+
+Pole referencji do zadań. Kliknięcie w zadanie otworzy [kartę szczegółów](/interfejsy/karty/zadanie).
+
+## Pliki
+
+### Protokół naprawy
+
+Pole typu attachment gdzie wyświetlany jest wygenerowany plik protokołu naprawy.
+
+Plik można wgrać, zobaczyć oraz pobrać.
+
+### Protokół diagnostyki
+
+Pole typu attachment gdzie wyświetlany jest wygenerowany plik protokołu diagnostyki.
+
+Plik można wgrać, zobaczyć oraz pobrać.
+
+Protokół można wygenerować w interfejsie [oferty serwisowej](/interfejsy/oferty/serwis#przycisk-%E2%80%9Cgeneruj-prot-diagn-%E2%80%9D).
+
+### Oferta pdf
+
+Pole typu lookup pokazuące zawartość pola "pliki" w podłączonym rekordzie oferty.
+
+### Faktura pdf
+
+Pole typu lookup pokazuące zawartość pola "pliki" w podłączonym rekordzie przepływu.
