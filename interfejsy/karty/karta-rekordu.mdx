@@ -1,0 +1,59 @@
+---
+title: "New file"
+description: "Elementy wspólne dla kart szczegółów rekordu"
+---
+
+## Nagłówek rekordu- link i wydruk
+
+### Wydruk
+
+Drukuje widok karty, opcja wbudowana w airtable.
+
+Coś jest nie tak z formatowaniem. Nie polecam.
+
+### Kopia linku do karty
+
+Kopiuje do schowka link do karty rekordu w aktualnym interfejsie. Skopiowany link otwiera kartę rekordu lecz na domyślnej stronie interfejsu.
+
+## Stopka rekordu- komentarze i historia zmian
+
+Możemy kliknąć w margines na sa samym dole karty. Otworzy to okienko z kilkoma bardzo przydatnymi opcjami.
+
+<img
+  src="/images/obraz.png"
+  alt="obraz.png"
+  title="obraz.png"
+  style={{ width:"71%" }}
+/>
+
+### Historia zmian
+
+Widoczna po wybraniu "Revision hisory" lub "All activity". Pozwala nam na dokładną analizę kto (lub co) i kiedy wprowadziło jakie zmiany.
+
+<Note>
+  Bardzo przydatna funkcja przy analizy potencjalnego "błędu automatyzacji" który to okazuje się błędem użytkownika.
+</Note>
+
+<Accordion title="Różne edycje i ich znaczenia" icon="sparkles">
+  ### Api
+
+  **Docsautomator integration-** edycja przez program do generowania dokumentów, prawdopodobnie załączył w rekordzie pdf.
+
+  **Zapier integration**- kiedyś dane importowane z memento, teraz używane token.
+
+  **... automation**- edycja wprowadzona przez automatyzacje w airtable. 
+
+  **... token**- zmiany importowane z memento.
+
+  **...edited from a synced base**- zmiany wprowadzone w bazie synchronizowanej. Aktualnie (z powodu ograniczenia ilości automatyzacji) część działa na bazie zsynchronizowanej (m.in. wszystkie, oprócz magazynu, skrypty synchronizacji airtable =\> memento).
+
+  ### Użytkownik
+
+  **... by importing a spreadsheet-** stworzono przez importowanie pliku np. excel/csv do bazy danych.
+
+  **... by pasting-** wklejono dane do rekordu.
+
+  **...edited this record (using CSV import extension)**- wprowadzono zmiany w bazie danych za importując plik csv. To rozszerzenie pozwala na edycje danych w rekordach dopasowysując po danym polu. Historycznie duże nieprawidłowości w bazie airtable były naprawiane importując plik csv z dysku, dopasowywując rekordy po memento id.
+
+  ### 
+</Accordion>
