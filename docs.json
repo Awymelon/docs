@@ -42,7 +42,11 @@
               "interfejsy/karty/szpital-klient"
             ]
           },
-                    {
+          {
+            "group": "Debug",
+            "pages": ["/interfejsy/debug"]            
+          },
+          {
             "group": "Szpitale/klienci",
             "pages": [
 
