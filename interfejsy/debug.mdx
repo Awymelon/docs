@@ -1,0 +1,75 @@
+---
+title: "Debug"
+description: "Interfejs służący do sprawdzenia jaki status synchronizacji airtable => memento mają rekordy"
+icon: "code"
+---
+
+![obraz.png](/images/obraz.png)
+
+## Pola w tabeli
+
+### Sync queue
+
+Informuje o statusu rekordu w kolejce
+
+- Synched- rekord wysłany do memento
+- Waiting- rekord czeka na wysłanie do memento
+
+### Suppress until
+
+W momencie synchronizacji rekordu (zmiana statusu na Synched"), ustawiany na aktualną godzinę + 2 minuty. Metoda zapobiegania echa.
+
+### Last error
+
+Ostatni błąd zwrócony przez cloudflare. Wszystkie błędy memento mismatch nie są ważne.
+
+### Last mod sync
+
+Pole wyświetlające godzinę ostatniej zmiany w wybranych polach. Obserwowane przez automatyzację. Zmiana w tym polu odpala automatyzację synchronizacji.
+
+### Last status
+
+Ostatnia wykonana akcja.
+
+## Metoda działania synchronizacji
+
+W zsynchronizowanej bazie "Tiemed auto" są automatyzacje zajmujące się synchronizacją przeglądów i zleceń (z uwagi na limit 50 automatyzacji na bazę). Znaczy to że mogą być pewne opóźnienia w działaniu synchronizacji airtable =\> memento.
+
+Aktualnie by tamta baza nie ulegała uśpieniu, co 15 minut jest ona wybudzana przez automatyzację. To powinno zmniejszać potencjalne opóźnienie w skrypcie synchronizacji do 15 minut (wcześniej wybudzana była co 30 minut).
+
+### Aktywacja skryptów
+
+Pole `Last mod sync`  wyświetla czas ostatniej zmiany w wybranych polach. Zmiany w tym polu aktywują 2 automatyzacje odpowiedzialne za wysyłanie rekordów do memento.
+
+<Note>
+  Automatyzacja jest podzielona na 2 ze względów ograniczeń w bazie synchronizowanej. W dalszej części dokumentacji będziemy się odnoscić do nich jako jedna automatyzacja w celu ułatwienia.
+</Note>
+
+### Działanie automatyzaji
+
+1. Aktywacja przez zmianę `Last mod sync`
+2. Sprawdzenie czy `Suppress until` jest w przeszłości oraz czy `Sync queue` nie jest \_waiting. \_Jeżeli obydwa warunki są spełnione to:
+   1. Ustaw `Sync queue` na _waiting_, `Suppress until` na teraz + 2 min
+   2. Wyślij zapytanie do cloudflare by za minutę przeskanował arkusz w poszukiwaniu rekordów ze statusem _waiting_ i je wysłał po kolei do memento.
+
+Cloudflare kolejkuje rekordy i wysyła je jeden po drugim z pewnym odstępem. Na minutę jest limit 5 rekordów. Jest to spowodowane ograniczeniami w memento api (max 10 zapytań na minutę).
+
+## Nasłuchiwane (i wysyłane) zmiany w arkuszach
+
+### Zlecenia serwisowe
+
+- Stan
+- Stan Admin
+- Numer oferty
+- Uwagi
+- Usterka
+- Naprawa
+
+### Przeglądy
+
+- Stan
+- Stan Admin
+
+### Magazyn
+
+- Ilość
