@@ -3,3 +3,259 @@ title: "Przegląd"
 description: "Karta szczegółów rekordu przeglądu."
 icon: "passport"
 ---
+
+---
+
+## Nagłówek
+
+### Lp
+
+Nadawany przez memento database. **Nie** jest unikalny, może się powtórzyć jeżeli powstały 2 rekordy w podobnym czasie na różnych urządzeniach. 
+
+## Przyciski akcji
+
+### Pomoc
+
+Otwiera w nowej karcie tą stronę :)
+
+### Generuj PP (3 kropki)
+
+Generuj protokół przeglądu. Automatyzacja wysyła do api docsautomator zapytanie o wygenerowanie dokumentu pdf który jest wstawiany w pole `pliki`.
+
+### Odznacz raport (3 kropki)
+
+Przycisk służący do odznaczenia przeglądu z raportu (rekord nie będzie już pojawiał się jako błąd w interfejsie raport).
+
+## Informacje dt. rekordu
+
+### Numer zlecenia/umowy
+
+Numer zlecenia nadany sprawie przez klienta lub numer umowy pod którą podchodzi rekord. Link do arkusza "Zlecenia klienta".
+
+### Stan
+
+Pole zmieniane jedynie przez serwisantów.
+
+- Do realizacji – urządzenie, którego przegląd został zaplanowany do wykonania
+- Sprawny - opisuje urządzenie sprawne technicznie lub takie, które wymaga naprawy NIE WPŁYWAJĄCEJ NA BEZPIECZEŃSTWO ORAZ FUNKCJE UŻYTKOWANIA  (np. uszkodzony  pakiet akumulatorów w łóżku elektrycznym)
+- Niesprawny - opisuje urządzenia niesprawne, wyłączone z dalszego użytkowania aż do czasu zakończenia naprawy
+- Problem - urządzenia, dla których wykonanie przeglądu nie było możliwe; w polu “Uwagi” (definicja poniżej) należy opisać jaki to powód (np. wykasowany)
+- ZF - Zafakturowany opisuje urządzenia, których przegląd został zafakturowany, a protokół wygenerowany
+- Zabrano do przeglądu - opisuje urządzenia, które zostały zabrane od klienta  w celu wykonania przeglądu; 
+- Anulowany - opisuje urządzenia, których wykonanie zostało anulowane (np. jedno urządzenie zostało wpisane do bazy przeglądów kilka razy)
+
+### Stan Admin
+
+Pole zmieniane jedynie przez administrację
+
+- ""  /  N/A - puste, oznacza że rekord jeszcze nie trafił do działu administracyjnego
+- ZF –Zafakturowany opisuje urządzenia, których przegląd został zafakturowany, a protokół wygenerowany
+- DUBEL – niepotrzebne powielenie już istniejącego rekordu
+- Po naprawie – Przegląd wykonywany po zakończonej naprawie wynikającej z wcześniej wykonanego przeglądu
+- Problem – problem z administracyjnym zamknięciem danego rekordu
+- Umówione – klient poinformowany o planowanej wizycie serwisanta w celu wykonania przeglądu
+
+## Klient
+
+### Płatnik (from Szpital/Klient)
+
+Pole typu lookup ukazujące płatnika przypsanego do wybranego szpitala. 
+
+### Szpital/Klient
+
+Referencja do arkusza [szpitali](). Klikając w nazwę klienta można otworzyć jego [kartę szczegółów](/interfejsy/karty/szpital-klient).
+
+### Oddział
+
+Oddział na którym znajduje się (powinno się znajdować) urządzenie.
+
+## Informacje identyfikacyjne urządzenia
+
+### Urządzenie, Producent, Numer Seryjny, Numer inwentarzowy, Model
+
+Informacje o urządzeniu. Numer inwentarzowy to numer czasami przypisany urządzeniu przez klienta.
+
+## Oferta, faktura
+
+<img
+  src="/images/Zrzutekranu2025-10-20164822.png"
+  alt="Zrzut ekranu 2025-10-20 164822.png"
+  title="Zrzut ekranu 2025-10-20 164822.png"
+  style={{ width:"67%" }}
+/>
+
+### Numer oferty (stary format)
+
+Pole tekstowe zawierające [numer oferty](/interfejsy/oferty/nowa-oferta#numer-oferty). Widoczne w bazie memento database. Mimo że jest zwykłym polem tekstowym, jego zawartość jest [parsowana i konwertowana](/interfejsy/oferty/nowa-oferta#numer-oferty-stary-format) na referencje w polu [oferta](#Oferta). Pole automatycznie wypełniane przy generowaniu oferty.
+
+### Oferta
+
+Referencja do rekordu oferty. Można kliknąć w numer by otworzyć [kartę szczegółów](/interfejsy/karty/oferta).
+
+### Przepływy
+
+Referencja do rekordu przepływu. Jeżeli obecna, rekord powinien mieć (`stan admin`)[#stan-admin] ZF.
+
+### Oferta netto
+
+Suma kwot netto z ofert posiadających referencję do tego zlecenia serwisowego.
+
+### Realny koszt (netto), VAT, Koszt brutto
+
+Koszt netto zlecenia serwisowego wypełniany przed tworzeniem faktury.
+
+Podatek VAT który dotyczy danego urządzenia (również wypełniany przed fakturowaniem).
+
+Koszt brutto obliczany automatycznie.
+
+### Oferta, Faktura pdf
+
+Pola typu lookup które wyswietlają zawartości pól z plikami pdf z podłączonych do rekordu faktur i ofert.
+
+## Informacje o naprawie
+
+<img
+  src="/images/Zrzutekranu2025-10-20164851.png"
+  alt="Zrzut ekranu 2025-10-20 164851.png"
+  title="Zrzut ekranu 2025-10-20 164851.png"
+  style={{ width:"57%" }}
+/>
+
+### Przywiózł
+
+Pierwsza osoba jaka miała kontakt z urządzeniem. Referencja do arkusza [serwisanci](sd).
+
+### Prowadzący
+
+Osoba odpowiedzialna za naprawę (może być inna niż naprawiająca). Referencja do arkusza [serwisanci](sd).
+
+### Szacowany czas naprawy
+
+Pole wypełniane przez serwisanta jeszcze przed naprawą. Wartość używana do [ofertowania](/interfejsy/oferty/oferta-ze-zlecenia#ustawienia-w-wygenerowanej-ofercie), używana do obliczenia [szacowanego kosztu naprawy](sd).
+
+### Łączny czas zlecenia
+
+`Szacowany czas naprawy` + `Czas przed naprawą (z zadań)`
+
+### Usterka
+
+Opis usterki.
+
+### Naprawiający
+
+Osoba która rzeczywiście przeprowadziła naprawę. Referencja do arkusza [serwisanci](sd).
+
+### Ocena
+
+Trudność zadania w ocenie przez serwisanta.
+
+### Data zakończenia naprawy
+
+Data zakończenia naprawy.
+
+### Naprawa
+
+Opis zastosowanych czynności naprawczych.
+
+### Uwagi
+
+Uwagi.
+
+### Link to zadania
+
+Zadania podpięte do rekordu. Można w nie kliknąć by wyświetlić szczegóły rekordów.
+
+### Podpis (from Naprawiający)
+
+Pole typu lookup, wyświetlające plik podpisu podpiętego do rekordu wybranego naprawiającego.
+
+### Obrazy
+
+Zebrane zdjęcia z pól zdjęcie1 do 4.
+
+### Protokół naprawy
+
+Pole typu attachment gdzie wyświetlany jest wygenerowany plik protokołu naprawy.
+
+Plik można wgrać, zobaczyć oraz pobrać.
+
+### Protokół diagnostyki
+
+Pole typu attachment gdzie wyświetlany jest wygenerowany plik protokołu diagnostyki.
+
+Plik można wgrać, zobaczyć oraz pobrać.
+
+Protokół można wygenerować w interfejsie [oferty serwisowej](/interfejsy/oferty/serwis#przycisk-%E2%80%9Cgeneruj-prot-diagn-%E2%80%9D).
+
+## Części
+
+### Lista
+
+Wyświetla podpięte do wpisu, rekordy z magazyn przepływy.
+
+### Dodawanie brakujących rekordów
+
+Działa tak jak w przypadku [przeglądów i zadań](/interfejsy/karty/zlecenie-serwisowe#link-to-przegl%C4%85dy), z tą różnicą że automatyzacja za każdym razem usuwa rekordy w magazyn przepływy, by następnie zastąpić je nowymi rekordami.
+
+<Note>
+  Ze względu na działanie pola referencji w memento, każda część będzie osobnym id w polu tekstowym. Automatyzacja wykrywa duplikaty i nadaje stosowną ilość w powstałych rekordach.
+</Note>
+
+## Referencje
+
+W tej części karty możnemy sprawdzić czy referencje zostały poprawnie załączone i w razie potrzeby, wywołać automatyzację która naprawi referencję.
+
+<img
+  src="/images/obraz.png"
+  alt="obraz.png"
+  title="obraz.png"
+  style={{ width:"71%" }}
+/>
+
+### Memento ID (lewa strona)
+
+Zawiera oddzielone średnikiem, 27 znakowe ID rekordów z memento. Ten ciąg znaków jest używany przez automatyzację do łączenia ze sobą rekordów.
+
+### Link to (środek)
+
+Pole referencyjne do wpisów danego arkusza. Klikając w rekord można wyświetlić jego kartę szczegółó**w (kolejno magazyn przepływy, przeglądy, zadania).**
+
+### Daj (prawa strona)
+
+Checkbox który ręcznie aktywuje automatyzacje tworzenia referencji między rekordami.
+
+<AccordionGroup>
+  <Accordion title="Brakująca referencja do przeglądu" icon="clipboard-question">
+    Ze względu że automatyzacja nasłuchuje zmiany w polu "Daj przeglądy" oraz "Przeglądy", gdy np. rekord zostanie utworzony już z referencją, automatyzacja może się nie odpalić. W takim przypadku pole tekstowe będzie wypełnione lecz Link to przeglądy będzie puste. By dodać brakującą referencję należy kliknąć `Daj przeglądy`. To uruchomi autmatyzację która połączy rekordy.
+
+    Czasem jedynie jeden z kliku rekordów może być połączony. W takiej sytuacji będziemy widzieli kilka ciągów 27 symboli oddzielonych przecinkiem. Kliknięcie `Daj przeglądy` również naprawi ten problem.
+
+    Alternatywą do wciśnięcia przycisku jest również wycięcie tekstu w polu przeglądy, poczekanie kilka sekund aż zmiana się zapisze, i ponowne wklejenie go w pole. Ta zmiana odpali autoamtyzację.
+  </Accordion>
+</AccordionGroup>
+
+## Odbierający
+
+### Imię i nazwisko
+
+Osoba która odebrała urządzenie. Referencja do arkusza Kontakty.
+
+### Podpis
+
+Link do podpisu osoby odbierającej urządzenie.
+
+Jeżeli zamiast linku jest lokalizacja lokalnego pliku (np. file:///data/user/0/com.luckydroid.droidbase/files/...), to znaczy że **plik nie wysłał się do chmury**. Często tak się dzieje jeżeli dodanie pliku do rekordu było ostatnią edycją rekordu. Zwykle razem z automtyzacją o 6 rano link do chmury zostanie wysłany do airtable.
+
+By ręcznie wymusić zmianę, należy otworzyć rekord w memento i wprowadzić dowolną zmianę w rekordzie. To spowoduje wysłanie rekordu do airtable.
+
+### Podpis plik
+
+Plik podpisu pobranego z podpis. Można ręcznie wgrać podpis za pomocą pliku lub linku.
+
+<Note>
+  Link musi zaczynać się na https a nie na http (zwykle wystarczy dodać literkę "s" w linku by wszystko działało).
+</Note>
+
+## Komentarze i historia zmian
+
+Opis dostępny [tutaj.](/interfejsy/karty/karta-rekordu)

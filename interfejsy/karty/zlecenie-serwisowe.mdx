@@ -5,8 +5,10 @@ icon: "screwdriver-wrench"
 ---
 
 <img
-  src="/images/Zrzut ekranu 2025-10-14 110824.png"
-  style={{ width:"60%" }}
+  src="/images/Zrzutekranu2025-10-20163201.png"
+  alt="Zrzut ekranu 2025-10-20 163201.png"
+  title="Zrzut ekranu 2025-10-20 163201.png"
+  style={{ width:"51%" }}
 />
 
 ## Nagłówek
@@ -47,12 +49,14 @@ Przycisk służący do bezpośredniego generowania [Protokołu Naprawy](sd) z po
 
 ### Typ zlecenia
 
-- DUBEL - zlecenie nieważne
-- GWARANCJA
-- REKLAMACJA
-- KONTYNUACJA ([jw.](#numer-zlecenia))
-- PO PRZEGLĄDIE - naprawa niesprawnego urządzenia po wykonaniu przeglądu. W takiej sytuacij rekord powinien mieć [referencję do przeglądu](sd).
-- ZLECENIE
+- ZLECENIE – oficjalne zapytanie ze strony klienta z prośbą o usunięcie usterki (możliwe drogi komunikacji to e-mail, zgłoszenie telefoniczne, rozmowa z serwisantem – koniecznie poinformować kierownika serwisu lub osobę z administracji)
+- PO PRZEGLĄDZIE -  jeśli usterka została wykryta podczas przeglądu
+- GWARANCJA - jeśli urządzenie jest na gwarancji (dotyczy tylko zleceń F&P)
+- REKLAMACJA - jeśli usterka nastąpiła w okresie gwarancji po ostatniej naprawie (zazwyczaj okres od 3 do 6 miesięcy)
+- DUBEL - jeśli rekord jest kopią  i jest przeznaczony do anulowania; w uwagach wpisać którego rekordu jest dublem  (do weryfikacji przed usunięciem).
+- KONTYNUACJA - jeśli naprawa jest rozdzielona na etapy; wszystkie rekordy powinny mieć nadany ten sam numer identyfikacyjny
+
+### 
 
 ### Numer zlecenia klienta
 
@@ -62,43 +66,63 @@ Numer zlecenia nadany sprawie przez klienta lub numer umowy pod którą podchodz
 
 Data założenia rekordu. Zwykle inna niż [Data naprawy]().
 
+### Położenie
+
+ informacja o tym gdzie znajduję się urządzenie lub jego część. Może zawierać następujące wartości:
+
+- U klienta – Sprzęt znajduje się w całości u klienta 
+- Warsztat  - sprzęt został zabrany na serwis w celu naprawy lub diagnostyki. Dotyczy także sytuacji kiedy zdemontowane zostały tylko części urządzenia.
+- WDS – (Wysłano do Serwisu Zewnętrznego) – urządzenie lub jego część została przekazana do innej firmy w celu naprawy.
+
 ### Stan
 
 Pole zmieniane jedynie przez serwisantów.
 
-- DD - Do diagnostyki
-- OD -
-- PD -
-- WZ -
-- PO -
-- DN - Do Naprawy (zakończono diagnostykę)
-- N - Naprawiony
-- O - Oferta (wysłano email dt. rekordu do działu administracji, zamó[wienia@tiemed.pl](mailto:wienia@tiemed.pl))
-- DO WYSYŁKI - urządzenie naprawione w warsztacie czeka na wysyłke zwrotną
-- ONC - Oczekuje Na Części
-- ZAKOŃCZONE - urządzenie naprawione
-- .ANULOWANE - zlecenie anulowane
-- .KASACJA - urządzenie oddane do kasacji
+- DD (DO DIAGNOSTYKI) - dla urządzeń do diagnostyki wprowadzonych jako nowy rekord do bazy
+- PD (PO DIAGNOSTYCE) - status nadawany po diagnostyce urządzenia
+- WZ (WYSŁANO ZAPYTANIE) o części – status nadawany przez serwisanta po wysłaniu zapytania ofertowego do dystrybutora, producenta.
+- PO (PRZESŁANO OFERTĘ)- status nadawany po przesłaniu WSZYSTKICH CZĘŚCI ORAZ OFERT OTRZYMANYCH OD DOSTAWCÓW ZEWNĘTRZNYCH do Działu administracji w celu przedstawienia oferty na naprawę.
+- DN (DO NAPRAWY) -  status nadawany urządzeniom po akceptacji kosztów przez klienta oraz gdy wszystkie części  niezbędne do naprawy są przygotowane
+- N – (NAPRAWIONE) – status nadawany urządzeniom naprawionym, oczekującym na zwrot do klienta
+- KASACJA  - jeśli koszt naprawy przekracza 75% wartości urządzania lub klient nie zaakceptował przedstawionej oferty na naprawę  
+- ANULOWANE – Klient zrezygnował z usługi lub doszło do innego błędu podczas dodawania nowego zlecenia
+- ZAKOŃCZONE – status nadawany zakończonym naprawom, urządzeniom zwróconym do klienta
 
 ### Stan Admin
 
-Pole zmieniane jedynie przez serwisantów
+Pole zmieniane jedynie przez administrację
 
 - ""  /  N/A - puste, oznacza że rekord jeszcze nie trafił do działu administracyjnego
-- OFERTA - wysłano oferte do klienta, czeka na odpowiedź.
-- OCZEKUJĄCY -
-- ANULOWANY - zlecenie anulowane
-- ZF - ZaFakturowano, wystawiono na rekord fakturę, defacto rekord historyczny.
+- AKCEPTACJA - jeśli naprawa jest po akceptacji kosztów przez szpital lub administrację. Następuję proces zamówienia części lub naprawy.
+- OFERTA - stan nadawany po wysłaniu oferty do klienta; należy pamiętać o uzupełnieniu pola NUMER OFERTY
+- O (OCZEKUJĄCE) - stan nadawany zleceniom oczekującym za akceptacją, nie wynikającą z oferty lub za zleceniem pisemnym lub oczekujące z innego powodu
+- ONC (OCZEKUJĄCE NA CZĘŚCI) - stan nadawany po zamówieniu części   
+- ZF (ZAFAKTUROWANO) - stan nadawany naprawom zakończonym po wygenerowaniu raportu oraz wystawieniu faktury dla klienta  
+- WDS (WYSŁANO DO SERWISU)  - stan nadawany naprawom realizowanym przez serwis zewnętrzny oczekującym na wycenę serwisu zewnętrznego; należy pamiętać o uzupełnieniu pola WDS - należy określić do kogo i kiedy wysłano 
+- WDS-O (WYSŁANO DO SERWISU - OFERTA) - stan nadawany urządzeniom naprawianym zewnętrznie przed akceptacją kosztów przez klienta
+- WDS-DN (WYSŁANO DO SERWISU – DO NAPRAWY) – stan nadawany urządzeniom naprawianym zewnętrznie po akceptacji kosztów przez klienta 
+- DO WYSYŁKI – stan nadawany urządzeniom, których naprawa może odbyć się jedynie w serwisie zewnętrznym
 
 <Note>
   Przy zmianie stanu admin rekordu na "ZF", wszystkie połączone części ([link to magazyn przepływy](sd)), które mają referencję do [magazynu](sd), zostają zdjęte ze stanu. Zmiany w magazynie w polu `ilość` wysyłane są do memento.
 </Note>
 
+### WDS
+
+Jeżeli położenie = WDS lub któreś z pól WDS jest wypełnione, pola WDS będą widoczne.
+
+<img
+  src="/images/Zrzutekranu2025-10-20164716.png"
+  alt="Zrzut ekranu 2025-10-20 164716.png"
+  title="Zrzut ekranu 2025-10-20 164716.png"
+  style={{ width:"82%" }}
+/>
+
 ## Klient
 
 ### Płatnik
 
-Referencja do arkusza [szpitali](). Zwykle płatnikiem jest płatnik wybranego klienta, jednak czasem (jak np. w przypadku naprawy gwarancyjnej) płatnik może być inny.\
+Referencja do arkusza [szpitali](). Zwykle płatnikiem jest płatnik wybranego klienta, jednak czasem (jak np. w przypadku naprawy gwarancyjnej) płatnik może być inny. \
 Klikając w płatnika można otworzyć jego [kartę szczegółów](/interfejsy/karty/szpital-klient).
 
 ### Płatnik (from Szpital/Klient)
@@ -119,7 +143,14 @@ Oddział na którym znajduje się (powinno się znajdować) urządzenie.
 
 Informacje o urządzeniu. Numer inwentarzowy to numer czasami przypisany urządzeniu przez klienta.
 
-## Oferty i faktury
+## Oferta, faktura
+
+<img
+  src="/images/Zrzutekranu2025-10-20164822.png"
+  alt="Zrzut ekranu 2025-10-20 164822.png"
+  title="Zrzut ekranu 2025-10-20 164822.png"
+  style={{ width:"67%" }}
+/>
 
 ### Numer oferty (stary format)
 
@@ -133,11 +164,62 @@ Referencja do rekordu oferty. Można kliknąć w numer by otworzyć [kartę szcz
 
 Referencja do rekordu przepływu. Jeżeli obecna, rekord powinien mieć (`stan admin`)[#stan-admin] ZF.
 
+### Oferta netto
+
+Suma kwot netto z ofert posiadających referencję do tego zlecenia serwisowego.
+
+### Realny koszt (netto), VAT, Koszt brutto
+
+Koszt netto zlecenia serwisowego wypełniany przed tworzeniem faktury.
+
+Podatek VAT który dotyczy danego urządzenia (również wypełniany przed fakturowaniem).
+
+Koszt brutto obliczany automatycznie.
+
+### Oferta, Faktura pdf
+
+Pola typu lookup które wyswietlają zawartości pól z plikami pdf z podłączonych do rekordu faktur i ofert.
+
 ## Informacje o naprawie
+
+<img
+  src="/images/Zrzutekranu2025-10-20164851.png"
+  alt="Zrzut ekranu 2025-10-20 164851.png"
+  title="Zrzut ekranu 2025-10-20 164851.png"
+  style={{ width:"57%" }}
+/>
+
+### Przywiózł
+
+Pierwsza osoba jaka miała kontakt z urządzeniem. Referencja do arkusza [serwisanci](sd).
+
+### Prowadzący
+
+Osoba odpowiedzialna za naprawę (może być inna niż naprawiająca). Referencja do arkusza [serwisanci](sd).
+
+### Szacowany czas naprawy
+
+Pole wypełniane przez serwisanta jeszcze przed naprawą. Wartość używana do [ofertowania](/interfejsy/oferty/oferta-ze-zlecenia#ustawienia-w-wygenerowanej-ofercie), używana do obliczenia [szacowanego kosztu naprawy](sd).
+
+### Łączny czas zlecenia
+
+`Szacowany czas naprawy` + `Czas przed naprawą (z zadań)`
 
 ### Usterka
 
 Opis usterki.
+
+### Naprawiający
+
+Osoba która rzeczywiście przeprowadziła naprawę. Referencja do arkusza [serwisanci](sd).
+
+### Ocena
+
+Trudność zadania w ocenie przez serwisanta.
+
+### Data zakończenia naprawy
+
+Data zakończenia naprawy.
 
 ### Naprawa
 
@@ -147,40 +229,68 @@ Opis zastosowanych czynności naprawczych.
 
 Uwagi.
 
-### Naprawiający
+### Link to zadania
 
-Referencja do arkusza [serwisanci](sd). Informacja o tym kto naprawiał urządzenie.
+Zadania podpięte do rekordu. Można w nie kliknąć by wyświetlić szczegóły rekordów.
 
-### Data zakończenia naprawy
+### Podpis (from Naprawiający)
 
-Data zakończenia naprawy.
+Pole typu lookup, wyświetlające plik podpisu podpiętego do rekordu wybranego naprawiającego.
 
 ### Obrazy
 
 Zebrane zdjęcia z pól zdjęcie1 do 4.
 
-## Przeglądy- referencja
+### Protokół naprawy
 
-### Link to przeglądy
+Pole typu attachment gdzie wyświetlany jest wygenerowany plik protokołu naprawy.
 
-Referencja do przeglądu poprzedzającego naprawę w przypadku naprawy "PO PRZEGLĄDZIE" oraz do przeglądu po naprawie.
+Plik można wgrać, zobaczyć oraz pobrać.
+
+### Protokół diagnostyki
+
+Pole typu attachment gdzie wyświetlany jest wygenerowany plik protokołu diagnostyki.
+
+Plik można wgrać, zobaczyć oraz pobrać.
+
+Protokół można wygenerować w interfejsie [oferty serwisowej](/interfejsy/oferty/serwis#przycisk-%E2%80%9Cgeneruj-prot-diagn-%E2%80%9D).
+
+## Części
+
+### Lista
+
+Wyświetla podpięte do wpisu, rekordy z magazyn przepływy.
+
+### Dodawanie brakujących rekordów
+
+Działa tak jak w przypadku [przeglądów i zadań](/interfejsy/karty/zlecenie-serwisowe#link-to-przegl%C4%85dy), z tą różnicą że automatyzacja za każdym razem usuwa rekordy w magazyn przepływy, by następnie zastąpić je nowymi rekordami.
+
+<Note>
+  Ze względu na działanie pola referencji w memento, każda część będzie osobnym id w polu tekstowym. Automatyzacja wykrywa duplikaty i nadaje stosowną ilość w powstałych rekordach.
+</Note>
+
+## Referencje
+
+W tej części karty możnemy sprawdzić czy referencje zostały poprawnie załączone i w razie potrzeby, wywołać automatyzację która naprawi referencję.
 
 <img
-  src="/images/Zrzut ekranu 2025-10-14 120557.png"
-  style={{ width:"60%" }}
+  src="/images/obraz.png"
+  alt="obraz.png"
+  title="obraz.png"
+  style={{ width:"71%" }}
 />
 
-### Przeglądy pole tekstowe
+### Memento ID (lewa strona)
 
-Zawiera oddzielone przecinkiem, 27 znakowe ID rekordów przeglądu z memento. Ten ciąg znaków jest używany przez automatyzację do łączenia ze sobą rekordów.
+Zawiera oddzielone średnikiem, 27 znakowe ID rekordów z memento. Ten ciąg znaków jest używany przez automatyzację do łączenia ze sobą rekordów.
 
-### Daj przeglądy
+### Link to (środek)
+
+Pole referencyjne do wpisów danego arkusza. Klikając w rekord można wyświetlić jego kartę szczegółó**w (kolejno magazyn przepływy, przeglądy, zadania).**
+
+### Daj (prawa strona)
 
 Checkbox który ręcznie aktywuje automatyzacje tworzenia referencji między rekordami.
-
-### Link to przeglądy
-
-Pole referencyjne do rekordów [przeglądów](sd). Klikając w rekord można wyświetlić [kartę szczegółów](/interfejsy/karty/przeglad).
 
 <AccordionGroup>
   <Accordion title="Brakująca referencja do przeglądu" icon="clipboard-question">
@@ -192,34 +302,7 @@ Pole referencyjne do rekordów [przeglądów](sd). Klikając w rekord można wy�
   </Accordion>
 </AccordionGroup>
 
-## Części- referencja
-
-### Części pole tekstowe
-
-Zawiera oddzielone przecinkiem, 27 znakowe ID rekordów przeglądu z memento. Ten ciąg znaków jest używany przez automatyzację do łączenia ze sobą rekordów.
-
-### Daj części
-
-Checkbox który ręcznie aktywuje automatyzacje tworzenia referencji między rekordami.
-
-### Link to części
-
-Pole referencyjne do rekordów [magazyn przepływy](sd). Klikając w rekord można wyświetlić [kartę szczegółów](/interfejsy/karty/magazyn-przeplywy).
-
-### Dodawanie brakujących rekordów
-
-Działa tak jak w przypadku [przeglądów](/interfejsy/karty/zlecenie-serwisowe#link-to-przegl%C4%85dy), z tą różnicą że automatyzacja za każdym razem usuwa rekordy w magazyn przepływy, by następnie zastąpić je nowymi rekordami.
-
-<img
-  src="/images/Zrzut ekranu 2025-10-14 122816.png"
-  style={{ width:"60%" }}
-/>
-
-<Note>
-  Ze względu na działanie pola referencji w memento, każda część będzie osobnym id w polu tekstowym. Automatyzacja wykrywa duplikaty i nadaje stosowną ilość w powstałych rekordach.
-</Note>
-
-## Osoba odbierająca
+## Odbierający
 
 ### Imię i nazwisko
 
@@ -240,56 +323,6 @@ Plik podpisu pobranego z podpis. Można ręcznie wgrać podpis za pomocą pliku 
 <Note>
   Link musi zaczynać się na https a nie na http (zwykle wystarczy dodać literkę "s" w linku by wszystko działało).
 </Note>
-
-## Referencja zadania i czas
-
-### Szacowany czas naprawy
-
-Pole wypełniane przez serwisanta jeszcze przed naprawą. Wartość używana do [ofertowania](/interfejsy/oferty/oferta-ze-zlecenia#ustawienia-w-wygenerowanej-ofercie), używana do obliczenia [szacowanego kosztu naprawy](sd).
-
-### Łączny czas naprawy
-
-`Szacowany czas naprawy` + `Czas przed naprawą (z zadań)`
-
-### Czas z zadań
-
-Łączny czas z wszystkich zadań przypisanych do rekordu.
-
-### Daj zadania
-
-Działanie identyczne jak w przypadku [`Daj przeglądy`](/interfejsy/karty/zlecenie-serwisowe#link-to-przegl%C4%85dy).
-
-### Zadania
-
-Pole tekstowe z memento ID rekordów zadań. Adekwatnie jak [przeglądy i części](/interfejsy/karty/zlecenie-serwisowe#link-to-przegl%C4%85dy).
-
-### Link to zadania
-
-Pole referencji do zadań. Kliknięcie w zadanie otworzy [kartę szczegółów](/interfejsy/karty/zadanie).
-
-## Pliki
-
-### Protokół naprawy
-
-Pole typu attachment gdzie wyświetlany jest wygenerowany plik protokołu naprawy.
-
-Plik można wgrać, zobaczyć oraz pobrać.
-
-### Protokół diagnostyki
-
-Pole typu attachment gdzie wyświetlany jest wygenerowany plik protokołu diagnostyki.
-
-Plik można wgrać, zobaczyć oraz pobrać.
-
-Protokół można wygenerować w interfejsie [oferty serwisowej](/interfejsy/oferty/serwis#przycisk-%E2%80%9Cgeneruj-prot-diagn-%E2%80%9D).
-
-### Oferta pdf
-
-Pole typu lookup pokazuące zawartość pola "pliki" w podłączonym rekordzie oferty.
-
-### Faktura pdf
-
-Pole typu lookup pokazuące zawartość pola "pliki" w podłączonym rekordzie przepływu.
 
 ## Komentarze i historia zmian
 
