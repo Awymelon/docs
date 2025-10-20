@@ -84,6 +84,17 @@
             ]
           }
         ]
+      },
+                  {
+        "tab": "Trello",
+        "groups": [
+          {
+            "group": "Trello",
+            "pages": [
+              "trello/trello"
+            ]
+          }
+        ]
       }
     ],
     "global": {
