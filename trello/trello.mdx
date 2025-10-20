@@ -42,8 +42,126 @@ Jedyna kolumna pozostałą ze starej wersji trello, która nie obrazuje workflow
 
 ## Tytuł i opis
 
-Tytuł powinien być krótki, jedno zdaniowy.
+Tytuł to jednozdaniowe streszczenie zadania.
+
+Do przekazania dodatkowych/pełnych informacji służy opis.
+
+**Formatowanie tekstu**. \
+Zdania zaczynają się wielką literą a kończą kropką. Wyjątkiem jest tytuł gdzie nie trzeba wstawiać kropki. Opis ani tytuł nie powinien zawierać informacji o priorytecie (priorytet niski a normalny ustalany jest przez pozcję w kolumnie `Niski priorytet` / `Do zrobienia` , w przypadku sytuacji krytycznej można użyć tagu \_PRIORYTET\_.
+
+<AccordionGroup>
+  <Accordion title="Przykłady kart z krótkim tytułem i opisem">
+    ### Poprawienie czytelności link to zlecenia w ofercie
+
+    Poprawienie czytelności interfejsu ofert w kontekście dodawania zleceń serwisowych. Poprawa ta zapobiegnie powstawaniu błędów przy dodawaniu zleceń serwisowych dla historycznych ofert z poza systemu.
+
+    ### Dane szpitali z KRS
+
+    Dodać zaciąganie api z KRS albo cidg  z nip do szpitali dane gov pl.
+
+    ### Błąd w pp
+
+    19056, PP się nie generuje.
+
+    ### Zmiana formatu numer oferty
+
+    Edycja by skrypt przed przy generowaniu nowej oferty zmieniał stary format\
+    (OnMMYYYY) na nowy (O-n-MM-YYYY).
+
+    ### Problem z linkiem do zdjęcia faktury w excelu
+
+    Faktura 5/08-2025 - w memento zdjęcie zostało dodane (użytkownik miał w momencie dodania połączenie z internetem), zaś w pliku excelowskim brakuje załącznika do zdjęcia przez co księgowość nie widzi dokumentu.
+  </Accordion>
+</AccordionGroup>
 
 ## Dodawanie obrazu
 
+Obraz można dodać do załączników karty lub wkleić do tekstu opisu (wtedy też się automatycznie doda do załączników). Należy jednak pamiętać żeby po dodaniu zdjęcia usunąć okładkę (karta ze zdjęciem zajmuje dużo miejsca co zmniejsza czytelność trello). By usunąć okładkę należy najechać na zdjęcie na góry karty (w widoku podglądu), w prawym dolnym rogu okładki na górze, pojawi się przycisk _usuń okładkę._
+
 ## Tagi
+
+Tagi służą do zakategoryzowania zadania. Można łączyć kilka tagów.
+
+### Wspomagacze
+
+Zadanie dotyczące stworzenia/modyfikacji automatyzacji "quality of life", czyli takiej co pomaga administracji w określonych działaniach. 
+
+- Dodać opcje proszenia memento o podpis.
+- Dodać automatyzacje z domyślnymi uwagami OP.
+
+### Nowa funkcja
+
+Dodanie nowej funkcji do środowiska.
+
+- Oferta na diagnostykę (dodanie funkcji tworzenia oferty na diagnostykę).
+- Generowanie orzeczenia kasacji (dodanie funkcji tworzenia orzeczenia kasacji).
+- W widoku magazyn potrzebny widok faktury zakupowej.
+
+### Rozszerzenie funkcji
+
+Rozszerzenie istniejącej już funkcji w środowisku.
+
+### Zmiana struktury
+
+Wprowadzenie zmian w strukturze bazy. 
+
+- _Zmiana typu pola z jednego na inne._
+- _Dodanie nowych opcji wyboru w polach._
+- _Zmiana formatowania w polach._
+
+### Lista
+
+Karta zawiera listę wielu zadań/poprawek. 
+
+### PRIORYTET
+
+Karta z zagadnieniem prorytetowym. Jeżeli jakaś karta dostanie taki status, należy rzucić wszystko co się robi by zająć się tym zadaniem. Stosowane jedynie w sytuacjach awarynych gdzie nie wykonanie zadania w jak najszybszym tempie może nieść za sobą duże konsekwencje.
+
+### Błąd
+
+Karta zawierająca informacje o potencjalnym błędzie do naprawy (działaniem w środowisku innym niż zamierzone).
+
+### Koncept
+
+Karta zawierająca jakiś koncept który wymaga dopracowania/opracowania/przetestowania/przemyślenia.
+
+### Format dokumentu
+
+Karta dotyczy jakichkolwiek zmian w formacie dokumentu docs automator. 
+
+- Zmiana template nazwy PP.
+- Dodać wartość jednostkową do części faktury.
+- _Dodanie/usunięcie/przesunięcie elementów dokumentu._
+- _Zmiana jakie dane są na dokumencie._
+
+### Interfejs
+
+Karta dotyczy strony interfejsu airtable.
+
+- Stworzenie widoku szczegóły oferty, przepłwu i zadania.
+- Przeglądy w kadrze nie zafakurowane a wszystkie.
+- Poprawienie czytelności link to zlecenia w ofercie.
+- _Dodanie/zmiana widoczności pól w interfejsach._
+- _Dodanie/zmiana filtrów/grup/sortowania w interfejsach._
+
+### Sychronizacja
+
+Karta dotyczy wysyłania danych między memento a airtable.
+
+- Sciąganie ze stanu magazynu przy ZF
+- Naprawić synchronizacje airtable =\> memento
+
+### Operacja na bazie
+
+Karta dotycząca wprowadzania zmian w rekordach airtable/memento.
+
+- Sprawdzenie poprawności załączonych zleceń serwisowych.
+- Porządkowanie bazy szpitali (nadanie typów, usunięcie duplikatów etc.).
+- Dodanie nowego magazynu (po inwentaryzacji).
+
+### Memento
+
+Karta dotyczy działania w memento.
+
+- Skrypt memento po naprawie ma usuwać pole uwagi.
+- Opracować lepszą strukturę synchronizacji dziennej.
